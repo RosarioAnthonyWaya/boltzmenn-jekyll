@@ -1,0 +1,95 @@
+---
+layout: default
+title: "Page Not Found"
+description: "This page isn't where it's supposed to be."
+permalink: /404.html
+noindex: true
+---
+<section class="bm-404-section">
+  <div class="bm-404-wrap">
+
+    <div id="bm404Scanning" class="bm-404-scanning">
+      <div class="bm-404-label">Running The Scan...</div>
+      <div class="bm-404-bar-track">
+        <div class="bm-404-bar-fill" id="bm404Fill"></div>
+      </div>
+      <div class="bm-404-percent" id="bm404Percent">0%</div>
+      <div class="bm-404-label" id="bm404Diagnosing" style="opacity:0;">Diagnosing...</div>
+    </div>
+
+    <div id="bm404Result" class="bm-404-result">
+      <div class="bm-eyebrow">Diagnosis Complete</div>
+      <h1 class="bm-404-h1">This page went missing.</h1>
+      <p class="bm-404-p">Ironically, that's exactly the kind of thing we fix — just haven't gotten to this one yet.</p>
+
+      <a href="{{ '/' | relative_url }}" class="cta-main w-inline-block bm-404-cta">
+        <div class="button-text-mask"><div class="button-text">← Return Home</div></div>
+        <div class="button-bg"></div>
+      </a>
+
+      <div class="bm-404-explore">
+        <span>Or explore instead:</span>
+        <a href="{{ '/diagnose/' | relative_url }}">Start With The Scan</a>
+        <span class="bm-404-dot">·</span>
+        <a href="{{ '/case-studies/' | relative_url }}">Client Stories</a>
+        <span class="bm-404-dot">·</span>
+        <a href="{{ '/what-we-fix/' | relative_url }}">What We Fix</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.bm-404-section{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:80px 24px;background:#fff;}
+.bm-404-wrap{max-width:520px;text-align:center;}
+
+.bm-404-scanning{font-family:'DM Sans',monospace;}
+.bm-404-label{font-size:13px;font-weight:600;letter-spacing:.05em;color:var(--bm-grey,#6B6B6B);margin-bottom:18px;
+  transition:opacity .3s;}
+.bm-404-bar-track{width:100%;height:8px;border-radius:4px;background:var(--bm-border,#E4EEEE);overflow:hidden;margin-bottom:10px;}
+.bm-404-bar-fill{height:100%;width:0%;border-radius:4px;
+  background:linear-gradient(135deg,#0b8c88,#1eb085);transition:width .1s linear;}
+.bm-404-percent{font-size:12px;font-weight:700;color:var(--bm-teal,#0b8c88);font-variant-numeric:tabular-nums;}
+
+.bm-404-result{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;pointer-events:none;
+  position:absolute;left:0;right:0;}
+.bm-404-result.show{opacity:1;transform:none;pointer-events:auto;position:static;}
+.bm-404-h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,38px);color:var(--bm-nb,#1A1A1A);margin:8px 0 14px;}
+.bm-404-p{font-size:15px;color:var(--bm-grey,#6B6B6B);line-height:1.6;max-width:420px;margin:0 auto 28px;}
+.bm-404-cta{margin-bottom:22px;}
+.bm-404-explore{font-size:13px;color:var(--bm-grey,#6B6B6B);}
+.bm-404-explore a{color:var(--bm-teal,#0b8c88);text-decoration:none;font-weight:600;margin:0 4px;}
+.bm-404-explore a:hover{text-decoration:underline;}
+.bm-404-dot{opacity:.4;margin:0 2px;}
+</style>
+
+<script>
+(function(){
+  var fill = document.getElementById('bm404Fill');
+  var percent = document.getElementById('bm404Percent');
+  var scanning = document.getElementById('bm404Scanning');
+  var diagnosing = document.getElementById('bm404Diagnosing');
+  var result = document.getElementById('bm404Result');
+  if(!fill) return;
+
+  var pct = 0;
+  var interval = setInterval(function(){
+    pct += Math.random() * 12 + 4;
+    if(pct >= 100){
+      pct = 100;
+      clearInterval(interval);
+      diagnosing.style.opacity = '1';
+      setTimeout(function(){
+        scanning.style.opacity = '0';
+        setTimeout(function(){
+          scanning.style.display = 'none';
+          result.classList.add('show');
+        }, 300);
+      }, 500);
+    }
+    fill.style.width = pct + '%';
+    percent.textContent = Math.round(pct) + '%';
+  }, 140);
+})();
+</script>

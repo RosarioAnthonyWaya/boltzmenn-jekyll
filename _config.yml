@@ -1,0 +1,43 @@
+# =====================================================================
+# Boltzmenn — Jekyll site config
+# =====================================================================
+title: "Boltzmenn"
+tagline: "Business Rescue & Growth for African SMEs"
+description: "Boltzmenn diagnoses what's broken in African founder-led businesses, then builds what's missing. We fix revenue, operations, financial clarity, customer experience, funding readiness, and founder dependency. Start with The Scan."
+url: "https://boltzmenn.com"        # no trailing slash -- used to build absolute URLs for SEO tags
+baseurl: ""                          # set to "/repo-name" only if deployed to a project subpath (e.g. GitHub Pages project sites)
+lang: "en"
+author: "Boltzmenn"
+logo: "https://i.ibb.co/vxs0DQ6k/boltz2.png"
+logo_white: "https://i.ibb.co/Jjbswqt3/boltz-white-logo.png"
+default_og_image: "/assets/images/og-default.jpg"   # 1200x630 recommended -- placeholder, replace with a real designed image
+
+# Social -- used in the JSON-LD Organization schema (sameAs) and footer icons.
+# Fill in the real handles/URLs before launch; leave blank to omit that entry from schema.
+social:
+  linkedin: "https://linkedin.com/company/boltzmenn"
+  instagram: "https://instagram.com/boltzmenn"
+  facebook: "https://facebook.com/boltzmenn"
+  whatsapp: "https://wa.me/2340000000000"   # replace with the real number
+
+# Contact -- used in schema + footer
+contact:
+  email: "info@boltzmenn.com"
+  partnerships_email: "blessed.osunde@boltzmenn.com"
+  city: "Lagos"
+  country: "Nigeria"
+
+# Search Console / analytics verification -- fill in when you have real IDs, leave blank otherwise
+google_site_verification: ""
+google_analytics_id: ""
+
+# Jekyll build settings
+markdown: kramdown
+permalink: pretty
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

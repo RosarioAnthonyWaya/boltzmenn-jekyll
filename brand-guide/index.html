@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boltzmenn Brand Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-dark: #0b8c88;
+    --teal-light: #1eb085;
+    --teal-mid: #12a08a;
+    --teal-pale: #e6f7f5;
+    --teal-muted: #b2deda;
+    --teal-deep: #076e6b;
+    --teal-deeper: #054f4d;
+    --white: #FFFFFF;
+    --ash: #F5F5F5;
+    --ash-dark: #EBEBEB;
+    --grey-light: #D4D4D4;
+    --grey-mid: #6B6B6B;
+    --grey-dark: #3A3A3A;
+    --near-black: #1A1A1A;
+    --gradient: linear-gradient(135deg, #0b8c88, #1eb085);
+    --gradient-vertical: linear-gradient(180deg, #0b8c88, #1eb085);
+    --gradient-subtle: linear-gradient(135deg, #e6f7f5, #d0f0e8);
+    --font-main: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-main);
+    background: var(--white);
+    color: var(--near-black);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--gradient);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 80px solid rgba(255,255,255,0.07);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 50px solid rgba(255,255,255,0.05);
+  }
+  .cover-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+  }
+  .cover-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 48px;
+    max-width: 480px;
+  }
+  .cover-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+  }
+  .cover-version {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 48px;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 960px; margin: 0 auto; padding: 80px 48px; }
+  .page-wide { max-width: 1100px; margin: 0 auto; padding: 80px 48px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    color: var(--near-black);
+    margin-bottom: 16px;
+  }
+  .section-intro {
+    font-size: 16px;
+    color: var(--grey-mid);
+    max-width: 600px;
+    margin-bottom: 56px;
+    font-weight: 400;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--ash-dark);
+    margin: 64px 0;
+  }
+  .gradient-divider {
+    height: 3px;
+    background: var(--gradient);
+    margin: 0;
+  }
+
+  /* ── CHAPTER OPENER ── */
+  .chapter {
+    background: var(--ash);
+    padding: 64px 48px;
+    border-left: 4px solid;
+    border-image: var(--gradient) 1;
+  }
+  .chapter-num {
+    font-size: 72px;
+    font-weight: 700;
+    color: var(--ash-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .chapter h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--near-black);
+  }
+  .chapter p {
+    font-size: 15px;
+    color: var(--grey-mid);
+    margin-top: 12px;
+    max-width: 520px;
+  }
+
+  /* ── COLOR SWATCHES ── */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; margin-bottom: 40px; }
+  .swatch {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--ash-dark);
+  }
+  .swatch-color { height: 100px; }
+  .swatch-info { padding: 14px 16px; background: white; }
+  .swatch-name { font-size: 13px; font-weight: 600; color: var(--near-black); }
+  .swatch-hex { font-size: 11px; color: var(--grey-mid); font-family: monospace; margin-top: 2px; }
+  .swatch-use { font-size: 11px; color: var(--grey-mid); margin-top: 6px; line-height: 1.5; }
+
+  /* ── GRADIENT SWATCHES ── */
+  .gradient-showcase {
+    border-radius: 8px;
+    padding: 40px;
+    background: var(--gradient);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-height: 140px;
+  }
+  .gradient-label { color: white; font-size: 13px; font-weight: 500; opacity: 0.8; }
+  .gradient-hex { color: white; font-size: 11px; font-family: monospace; opacity: 0.6; }
+
+  /* ── RULES BLOCK ── */
+  .rules-block { background: var(--ash); border-radius: 8px; padding: 32px 36px; margin-bottom: 24px; }
+  .rules-block h4 { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 20px; }
+  .rule-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: var(--grey-dark);
+    line-height: 1.6;
+  }
+  .rule-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal-dark);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── DO / DON'T ── */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+  .do-box, .dont-box { border-radius: 8px; padding: 28px 32px; }
+  .do-box { background: #e6f7f5; border: 1px solid #b2deda; }
+  .dont-box { background: #fdf0f0; border: 1px solid #f5c6c6; }
+  .do-box h4 { color: var(--teal-dark); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .dont-box h4 { color: #c0392b; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .do-box li, .dont-box li { font-size: 13.5px; line-height: 1.7; color: var(--grey-dark); margin-bottom: 6px; list-style: none; padding-left: 16px; position: relative; }
+  .do-box li::before { content: '✓'; position: absolute; left: 0; color: var(--teal-dark); font-weight: 700; }
+  .dont-box li::before { content: '✗'; position: absolute; left: 0; color: #c0392b; font-weight: 700; }
+
+  /* ── FONT SPECIMEN ── */
+  .font-specimen { border: 1px solid var(--ash-dark); border-radius: 8px; padding: 36px; margin-bottom: 24px; }
+  .font-tag { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--grey-mid); margin-bottom: 20px; }
+  .font-display-name { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; color: var(--near-black); margin-bottom: 4px; }
+  .font-meta { font-size: 12px; color: var(--grey-mid); margin-bottom: 24px; }
+  .font-sample-text { font-size: 15px; color: var(--grey-dark); line-height: 1.7; border-top: 1px solid var(--ash-dark); padding-top: 20px; }
+  .weight-row { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+  .weight-item { font-size: 14px; color: var(--grey-dark); }
+
+  /* ── VIDEO SECTION ── */
+  .video-card { background: var(--near-black); border-radius: 10px; padding: 36px; margin-bottom: 20px; }
+  .video-card h4 { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .video-spec-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .video-spec-row:last-child { border-bottom: none; }
+  .video-spec-label { font-size: 12px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+  .video-spec-value { font-size: 14px; font-weight: 600; color: white; }
+  .video-spec-note { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; text-align: right; }
+
+  /* mock video overlay preview */
+  .video-mock {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-mock-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, #0d2b2a 0%, #0b1f1e 60%, #071514 100%);
+  }
+  .video-mock-content { position: relative; z-index: 2; padding: 40px; width: 100%; }
+  .vm-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal-light); font-weight: 600; margin-bottom: 12px; }
+  .vm-headline { font-size: clamp(20px, 3.5vw, 36px); font-weight: 700; color: white; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 12px; }
+  .vm-body { font-size: clamp(11px, 1.5vw, 14px); color: rgba(255,255,255,0.6); font-weight: 400; max-width: 380px; }
+  .vm-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gradient); }
+  .vm-caption { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; background: rgba(0,0,0,0.75); padding: 8px 20px; font-size: 13px; color: white; margin: 0 40px; border-radius: 4px; }
+
+  .video-mock-reel {
+    position: relative;
+    aspect-ratio: 9/16;
+    max-width: 300px;
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .vmr-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #071514 0%, #0b8c88 100%); }
+  .vmr-content { position: relative; z-index: 2; padding: 24px; width: 100%; }
+  .vmr-headline { font-size: 18px; font-weight: 700; color: white; line-height: 1.15; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .vmr-caption { font-size: 11px; color: rgba(255,255,255,0.6); }
+  .vmr-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 3px solid var(--teal-dark);
+    background: var(--teal-pale);
+    padding: 20px 24px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--teal-deeper);
+    line-height: 1.6;
+  }
+  .callout strong { font-weight: 700; }
+
+  /* ── TABLE ── */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 13.5px; }
+  th { background: var(--near-black); color: white; padding: 12px 16px; text-align: left; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--ash-dark); color: var(--grey-dark); vertical-align: top; line-height: 1.6; }
+  tr:nth-child(even) td { background: var(--ash); }
+  td strong { color: var(--near-black); font-weight: 600; }
+
+  /* ── VIDEO COLOR BLOCKS ── */
+  .vc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .vc-block { border-radius: 8px; overflow: hidden; }
+  .vc-top { height: 80px; display: flex; align-items: center; justify-content: center; }
+  .vc-bottom { padding: 12px 14px; background: var(--ash); }
+  .vc-name { font-size: 12px; font-weight: 700; color: var(--near-black); }
+  .vc-hex { font-size: 11px; font-family: monospace; color: var(--grey-mid); }
+  .vc-use { font-size: 11px; color: var(--grey-mid); margin-top: 4px; line-height: 1.4; }
+
+  /* ── BADGE ── */
+  .badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 8px; }
+  .badge-teal { background: var(--teal-pale); color: var(--teal-dark); }
+  .badge-dark { background: var(--near-black); color: white; }
+
+  /* ── FOOTER ── */
+  .guide-footer {
+    background: var(--near-black);
+    padding: 60px 48px;
+    text-align: center;
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .guide-footer strong { color: white; }
+
+  @media (max-width: 680px) {
+    .cover { padding: 48px 32px; }
+    .page, .page-wide { padding: 48px 24px; }
+    .do-dont { grid-template-columns: 1fr; }
+    .color-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">Official Brand Guidelines</div>
+  <h1>Boltzmenn<br>Brand Guide</h1>
+  <p class="cover-sub">Everything freelancers, designers, video creators, and new staff need to represent the Boltzmenn brand correctly and consistently.</p>
+  <div class="cover-meta">Version 1.0 &nbsp;·&nbsp; April 2026 &nbsp;·&nbsp; Confidential</div>
+  <div class="cover-version">Internal Use Document</div>
+</div>
+<div class="gradient-divider"></div>
+
+<!-- INTRO -->
+<div class="page">
+  <p class="section-label">Introduction</p>
+  <h2 class="section-title">Why this guide exists</h2>
+  <p class="section-intro">Boltzmenn is a serious, Africa-focused business growth institution. How we look, sound, and show up publicly is part of our credibility. This guide gives everyone who works with us — full-time, part-time, or freelance — a clear, non-negotiable reference for representing the brand correctly.</p>
+
+  <div class="callout">
+    <strong>The single most important rule:</strong> Boltzmenn should always feel like calm authority. Not loud. Not flashy. Not generic. Every design decision — font choice, color usage, spacing, tone — should point toward a brand that is intelligent, structured, and trustworthy.
+  </div>
+
+  <div class="rules-block">
+    <h4>Before you design anything, ask yourself:</h4>
+    <div class="rule-item"><div class="rule-dot"></div><span>Does this feel calm and structured, or chaotic and loud?</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Is this clean and purposeful, or cluttered and decorative?</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Does this communicate trust and intelligence, or just look nice?</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Would a serious business owner trust a company that looks like this?</span></div>
+  </div>
+</div>
+
+<div class="gradient-divider"></div>
+
+<!-- CHAPTER 1: COLORS -->
+<div class="chapter">
+  <div class="chapter-num">01</div>
+  <h2>Color System</h2>
+  <p>Our complete color palette — primary, supporting, and video-specific — with rules for every use case.</p>
+</div>
+
+<div class="page">
+  <p class="section-label">Primary Colors</p>
+  <h2 class="section-title">The Gradient</h2>
+  <p class="section-intro">The green-to-teal gradient is the single most recognizable visual element of the Boltzmenn brand. It represents growth, clarity, and forward movement. Everything else in the palette exists to support it.</p>
+
+  <div class="gradient-showcase">
+    <div>
+      <div class="gradient-label">Primary Gradient</div>
+      <div class="gradient-hex">#0b8c88 → #1eb085</div>
+    </div>
+    <div style="text-align:right">
+      <div class="gradient-hex">135° angle standard</div>
+      <div class="gradient-hex">180° for vertical layouts</div>
+    </div>
+  </div>
+
+  <div class="color-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#0b8c88;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal Dark</div>
+        <div class="swatch-hex">#0b8c88</div>
+        <div class="swatch-use">Gradient start, borders, accents, headings on light bg</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1eb085;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal Light</div>
+        <div class="swatch-hex">#1eb085</div>
+        <div class="swatch-use">Gradient end, highlights, CTA buttons, icon fills</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#12a08a;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal Mid</div>
+        <div class="swatch-hex">#12a08a</div>
+        <div class="swatch-use">Hover states, mid-gradient fallback, interactive elements</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#076e6b;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal Deep</div>
+        <div class="swatch-hex">#076e6b</div>
+        <div class="swatch-use">Pressed/active states, dark backgrounds with gradient text</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#054f4d;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal Deeper</div>
+        <div class="swatch-hex">#054f4d</div>
+        <div class="swatch-use">Dark video backgrounds, overlays, deep contrast sections</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#e6f7f5;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal Pale</div>
+        <div class="swatch-hex">#e6f7f5</div>
+        <div class="swatch-use">Section backgrounds, callout boxes, subtle highlights</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#b2deda;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Teal Muted</div>
+        <div class="swatch-hex">#b2deda</div>
+        <div class="swatch-use">Decorative lines, dividers, inactive elements</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Supporting Colors</p>
+  <h2 class="section-title">Neutrals</h2>
+  <p class="section-intro">The neutral palette creates the breathing room the brand needs. These are not filler colors — they are structural. Used correctly, they make the gradient stand out even more.</p>
+
+  <div class="color-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#FFFFFF; border-bottom: 1px solid #ebebeb;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">White</div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-use">Primary background, text on dark backgrounds, cards</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F5F5F5;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ash</div>
+        <div class="swatch-hex">#F5F5F5</div>
+        <div class="swatch-use">Section alternates, rules blocks, input backgrounds</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#EBEBEB;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Ash Dark</div>
+        <div class="swatch-hex">#EBEBEB</div>
+        <div class="swatch-use">Borders, dividers, table rows, subtle separators</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#D4D4D4;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Grey Light</div>
+        <div class="swatch-hex">#D4D4D4</div>
+        <div class="swatch-use">Placeholder text, inactive states, caption backgrounds</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#6B6B6B;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Grey Mid</div>
+        <div class="swatch-hex">#6B6B6B</div>
+        <div class="swatch-use">Body text, secondary headings, labels, metadata</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#3A3A3A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Grey Dark</div>
+        <div class="swatch-hex">#3A3A3A</div>
+        <div class="swatch-use">Primary body copy, list items, supporting text</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1A1A1A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Near Black</div>
+        <div class="swatch-hex">#1A1A1A</div>
+        <div class="swatch-use">Main headings, dark section backgrounds, video overlays</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Important:</strong> Pure black (#000000) is not a Boltzmenn brand color. Always use Near Black (#1A1A1A) instead. Pure black feels harsh and conflicts with our calm, structured aesthetic.
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Color Rules</p>
+  <h2 class="section-title">How to use color correctly</h2>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>✓ Do</h4>
+      <ul>
+        <li>Use the gradient as the primary brand anchor — it should appear on every piece of content in some form</li>
+        <li>Use white and ash to create breathing room around the gradient</li>
+        <li>Use grey (#6B6B6B) for body text on white or ash backgrounds</li>
+        <li>Use Near Black (#1A1A1A) for headings and dark backgrounds</li>
+        <li>Use Teal Pale (#e6f7f5) for subtle branded highlight areas</li>
+        <li>Keep text white on dark or gradient backgrounds</li>
+        <li>Use the gradient on CTAs, borders, underlines, and key UI elements</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>✗ Don't</h4>
+      <ul>
+        <li>Do not use pure black (#000000) anywhere in brand materials</li>
+        <li>Do not use the gradient as a full-page background on every element — it loses impact</li>
+        <li>Do not combine the gradient with other bright or saturated colors</li>
+        <li>Do not use yellow, red, orange, or neon colors as accents</li>
+        <li>Do not put grey text on the gradient — use white only</li>
+        <li>Do not use multiple gradients or competing color themes</li>
+        <li>Do not use gold, heavy black, or silver — these feel like luxury clichés</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Text on Color</p>
+  <h2 class="section-title">Readable combinations only</h2>
+
+  <table>
+    <thead>
+      <tr><th>Background</th><th>Approved Text Color</th><th>Never Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>White (#FFFFFF)</strong></td><td>Near Black, Grey Dark, Grey Mid, Teal Dark</td><td>White text, Yellow, any light color</td></tr>
+      <tr><td><strong>Ash (#F5F5F5)</strong></td><td>Near Black, Grey Dark, Grey Mid, Teal Dark</td><td>White text, light grey text</td></tr>
+      <tr><td><strong>Gradient</strong></td><td>White only (#FFFFFF)</td><td>Grey, Near Black, any dark or colored text</td></tr>
+      <tr><td><strong>Near Black (#1A1A1A)</strong></td><td>White, Ash, Teal Light, Teal Muted</td><td>Dark grey, Near Black text</td></tr>
+      <tr><td><strong>Teal Deep (#076e6b)</strong></td><td>White only</td><td>Grey, Near Black</td></tr>
+      <tr><td><strong>Teal Pale (#e6f7f5)</strong></td><td>Teal Deep, Teal Dark, Near Black, Grey Dark</td><td>White text, light grey</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="gradient-divider"></div>
+
+<!-- CHAPTER 2: TYPOGRAPHY -->
+<div class="chapter">
+  <div class="chapter-num">02</div>
+  <h2>Typography</h2>
+  <p>Our font system — chosen for clarity, intelligence, and brand distinction. Applies to all print, digital, and video content.</p>
+</div>
+
+<div class="page">
+  <p class="section-label">Brand Fonts</p>
+  <h2 class="section-title">Our approved typefaces</h2>
+  <p class="section-intro">Boltzmenn uses a small, deliberate font family. These choices were made to feel modern and distinctive without being trendy or generic. Do not introduce fonts outside this approved list.</p>
+
+  <!-- SATOSHI -->
+  <div class="font-specimen">
+    <div class="badge badge-teal">Primary Font</div>
+    <div class="font-tag">Headings · Titles · Display · Key Statements</div>
+    <div class="font-display-name" style="font-family:'DM Sans',sans-serif; font-weight:700;">Satoshi</div>
+    <div class="font-meta">Geometric Sans-Serif &nbsp;·&nbsp; Available via Fontshare (free) &nbsp;·&nbsp; Use for all major headings</div>
+    <div class="weight-row">
+      <div class="weight-item" style="font-weight:300;">Light 300</div>
+      <div class="weight-item" style="font-weight:400;">Regular 400</div>
+      <div class="weight-item" style="font-weight:500;">Medium 500</div>
+      <div class="weight-item" style="font-weight:700;">Bold 700</div>
+      <div class="weight-item" style="font-weight:900;">Black 900</div>
+    </div>
+    <div class="font-sample-text">
+      <strong style="font-size:13px; color: var(--grey-mid);">SAMPLE — HEADING USE:</strong><br><br>
+      <span style="font-size:32px; font-weight:700; letter-spacing:-0.5px; color:var(--near-black); line-height:1.1; display:block; margin-bottom:12px;">Your business isn't broken.<br>It's just missing structure.</span>
+      <span style="font-size:14px; color:var(--grey-mid);">Satoshi Bold · 32px · Letter-spacing: -0.5px</span>
+    </div>
+  </div>
+
+  <!-- DM SANS -->
+  <div class="font-specimen">
+    <div class="badge badge-teal">Secondary Font</div>
+    <div class="font-tag">Body Copy · Captions · Labels · Supporting Text</div>
+    <div class="font-display-name" style="font-family:'DM Sans',sans-serif;">DM Sans</div>
+    <div class="font-meta">Humanist Sans-Serif &nbsp;·&nbsp; Available via Google Fonts (free) &nbsp;·&nbsp; Use for body copy, captions, labels</div>
+    <div class="weight-row">
+      <div class="weight-item" style="font-family:'DM Sans'; font-weight:300;">Light 300</div>
+      <div class="weight-item" style="font-family:'DM Sans'; font-weight:400;">Regular 400</div>
+      <div class="weight-item" style="font-family:'DM Sans'; font-weight:500;">Medium 500</div>
+      <div class="weight-item" style="font-family:'DM Sans'; font-weight:700;">Bold 700</div>
+    </div>
+    <div class="font-sample-text" style="font-family:'DM Sans';">
+      <strong style="font-size:13px; color: var(--grey-mid);">SAMPLE — BODY USE:</strong><br><br>
+      <span style="font-size:15px; font-weight:400; color:var(--grey-dark); line-height:1.75; display:block; margin-bottom:12px;">Many African businesses have talent, hustle, and real market opportunity. What they often lack is structure, strategic clarity, and systems that work without the founder being in the room.</span>
+      <span style="font-size:14px; color:var(--grey-mid);">DM Sans Regular · 15px · Line-height: 1.75</span>
+    </div>
+  </div>
+
+  <!-- POPPINS -->
+  <div class="font-specimen">
+    <div class="badge badge-dark">Video Fallback</div>
+    <div class="font-tag">Use in CapCut / video tools only when Satoshi is unavailable</div>
+    <div class="font-display-name" style="font-family:'DM Sans',sans-serif; font-weight:600;">Poppins</div>
+    <div class="font-meta">Geometric Sans-Serif &nbsp;·&nbsp; Available in CapCut and most video tools &nbsp;·&nbsp; Fallback for Satoshi in video only</div>
+    <div class="font-sample-text">
+      <span style="font-size:13px; color:var(--grey-mid);">Use Poppins SemiBold or Bold for headings and Poppins Regular for body/captions when Satoshi cannot be installed in your video tool. Do not use thin weights — the brand needs presence.</span>
+    </div>
+  </div>
+
+  <!-- GOTHAM NOTE -->
+  <div class="font-specimen">
+    <div class="badge badge-dark">Display / Selective Use</div>
+    <div class="font-tag">Headlines and title cards only — confirm licensing before commercial use</div>
+    <div class="font-display-name" style="font-family:'DM Sans',sans-serif; font-weight:700; letter-spacing:-1px;">Gotham</div>
+    <div class="font-meta">Geometric Sans-Serif &nbsp;·&nbsp; Licensed font &nbsp;·&nbsp; Strong for bold title statements</div>
+    <div class="font-sample-text">
+      <span style="font-size:13px; color:var(--grey-mid);">Gotham is excellent for bold, authoritative headline cards and title slides. If you have a licensed copy, use Bold or Medium weights. Do not use Gotham for body or caption text. Always verify licensing before use in commercial content.</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Typography Rules</p>
+  <h2 class="section-title">How to use type correctly</h2>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>✓ Do</h4>
+      <ul>
+        <li>Use Satoshi Bold or SemiBold for all major headings — headings need visual weight</li>
+        <li>Use DM Sans Regular or Medium for body text and captions</li>
+        <li>Apply slight negative letter-spacing on large headings (−0.5px to −1px)</li>
+        <li>Add slight open tracking on small uppercase labels (+2px to +3px)</li>
+        <li>Maintain generous line-height on body text (1.65–1.75)</li>
+        <li>Keep a clear hierarchy between heading, subheading, and body</li>
+        <li>Use DM Sans 300 (Light) sparingly for large display quotes or pull text</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>✗ Don't</h4>
+      <ul>
+        <li>Do not use thin or ultralight weights for headings — they look weak</li>
+        <li>Do not mix more than two fonts in one layout</li>
+        <li>Do not use decorative, script, or handwritten fonts — ever</li>
+        <li>Do not use ALL CAPS for body text or long sentences</li>
+        <li>Do not use Montserrat, Roboto, Arial, or generic system fonts</li>
+        <li>Do not use outlined/stroke text — it looks cheap</li>
+        <li>Do not use text shadows unless absolutely necessary for readability on video</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Type Scale</p>
+  <h2 class="section-title">Sizing reference</h2>
+
+  <table>
+    <thead>
+      <tr><th>Level</th><th>Font</th><th>Size</th><th>Weight</th><th>Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Display</strong></td><td>Satoshi</td><td>56–80px</td><td>700–900</td><td>Hero headlines, cover titles</td></tr>
+      <tr><td><strong>H1</strong></td><td>Satoshi</td><td>40–52px</td><td>700</td><td>Page or section main title</td></tr>
+      <tr><td><strong>H2</strong></td><td>Satoshi</td><td>28–36px</td><td>600–700</td><td>Section headings</td></tr>
+      <tr><td><strong>H3</strong></td><td>Satoshi</td><td>20–24px</td><td>600</td><td>Subsection headings, card titles</td></tr>
+      <tr><td><strong>Label</strong></td><td>DM Sans</td><td>10–12px</td><td>600–700</td><td>Uppercase labels, eyebrows, tags</td></tr>
+      <tr><td><strong>Body</strong></td><td>DM Sans</td><td>14–16px</td><td>400</td><td>All body copy and descriptions</td></tr>
+      <tr><td><strong>Caption</strong></td><td>DM Sans</td><td>11–13px</td><td>400–500</td><td>Metadata, footnotes, image captions</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="gradient-divider"></div>
+
+<!-- CHAPTER 3: VIDEO -->
+<div class="chapter">
+  <div class="chapter-num">03</div>
+  <h2>Video Content</h2>
+  <p>Typography, color, layout, and overlay rules specifically for video creators using CapCut and similar tools.</p>
+</div>
+
+<div class="page">
+  <p class="section-label">For Video Creators</p>
+  <h2 class="section-title">Video typography guide</h2>
+  <p class="section-intro">Video is one of the highest-visibility touchpoints for the brand. Inconsistent fonts, wrong colors, or sloppy text overlays damage credibility instantly. Follow these rules on every video.</p>
+
+  <div class="callout">
+    <strong>Font Priority for CapCut:</strong> First choice is <strong>Satoshi</strong> (install manually if needed from Fontshare). If not available, use <strong>Poppins</strong>. If neither is available, use <strong>Nunito Sans</strong> as a last resort. Never use CapCut default decorative fonts.
+  </div>
+
+  <!-- VIDEO MOCK - landscape -->
+  <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--grey-mid); margin-bottom:12px;">EXAMPLE — Landscape / YouTube / LinkedIn</p>
+  <div class="video-mock">
+    <div class="video-mock-bg"></div>
+    <div class="video-mock-content">
+      <div class="vm-eyebrow">Business Growth · Boltzmenn</div>
+      <div class="vm-headline">Your business isn't broken.<br>It's missing structure.</div>
+      <div class="vm-body">Most African SMEs have the hustle. What they need is the system. This is where Boltzmenn comes in.</div>
+    </div>
+    <div class="vm-bar"></div>
+  </div>
+
+  <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:40px; flex-wrap:wrap;">
+    <!-- VIDEO MOCK - reel -->
+    <div>
+      <p style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--grey-mid); margin-bottom:12px;">EXAMPLE — Reels / Shorts / TikTok</p>
+      <div class="video-mock-reel">
+        <div class="vmr-bg"></div>
+        <div class="vmr-bar"></div>
+        <div class="vmr-content">
+          <div class="vmr-headline">Three signs your business needs rescue, not funding.</div>
+          <div class="vmr-caption">Boltzmenn · Business Growth Africa</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1; min-width:260px; padding-top:28px;">
+      <div class="rules-block">
+        <h4>Reel / Short Format Rules</h4>
+        <div class="rule-item"><div class="rule-dot"></div><span>Headline text: Satoshi Bold or Poppins SemiBold, 24–36px equivalent</span></div>
+        <div class="rule-item"><div class="rule-dot"></div><span>Keep headline to 10 words or fewer for vertical formats</span></div>
+        <div class="rule-item"><div class="rule-dot"></div><span>Always include a thin gradient bar (top or bottom) as a brand anchor</span></div>
+        <div class="rule-item"><div class="rule-dot"></div><span>Bottom credit line: DM Sans Regular, 11–12px, 60% white opacity</span></div>
+        <div class="rule-item"><div class="rule-dot"></div><span>Avoid placing text over busy footage — use a dark overlay first</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Video Typography Specs</p>
+  <h2 class="section-title">Text layers in video</h2>
+
+  <div class="video-card">
+    <h4>Text Layer Specifications — All Video Formats</h4>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">Main Title / Hook</div>
+        <div class="video-spec-note">The opening statement that grabs attention</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">Satoshi Bold / Poppins SemiBold</div>
+        <div class="video-spec-note">36–52px · White #FFFFFF · Letter-spacing: −0.5px</div>
+      </div>
+    </div>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">Section Heading</div>
+        <div class="video-spec-note">Mid-video chapter or segment title</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">Satoshi SemiBold / Poppins Medium</div>
+        <div class="video-spec-note">24–32px · White or Teal Light #1eb085</div>
+      </div>
+    </div>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">Subtitle / Auto-captions</div>
+        <div class="video-spec-note">Spoken word captions</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">DM Sans Medium / Poppins Regular</div>
+        <div class="video-spec-note">16–20px · White · Semi-transparent dark bg recommended</div>
+      </div>
+    </div>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">Lower-Third Name</div>
+        <div class="video-spec-note">Speaker or guest name on screen</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">Satoshi Bold (name) + DM Sans Regular (title)</div>
+        <div class="video-spec-note">Name: 18–22px · Title: 12–14px · Both white · Gradient accent bar</div>
+      </div>
+    </div>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">Eyebrow / Label</div>
+        <div class="video-spec-note">Small category label above heading</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">DM Sans SemiBold — ALL CAPS</div>
+        <div class="video-spec-note">10–12px · Teal Light #1eb085 · Letter-spacing: +3px</div>
+      </div>
+    </div>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">Brand Credit / Watermark</div>
+        <div class="video-spec-note">Bottom corner brand tag</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">DM Sans Regular or Medium</div>
+        <div class="video-spec-note">11–13px · White at 50–65% opacity · Bottom right corner</div>
+      </div>
+    </div>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">CTA Text</div>
+        <div class="video-spec-note">Call to action at end of video</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">Satoshi Bold</div>
+        <div class="video-spec-note">20–28px · White on gradient bg · Never plain text on plain bg</div>
+      </div>
+    </div>
+    <div class="video-spec-row">
+      <div>
+        <div class="video-spec-label">Key Stat / Pull Quote</div>
+        <div class="video-spec-note">Highlighted numbers or key lines</div>
+      </div>
+      <div style="text-align:right">
+        <div class="video-spec-value">Satoshi Black (900) for number · DM Sans for context</div>
+        <div class="video-spec-note">Number: 48–64px · Teal Light · Context: 14–16px White</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Video Color Guide</p>
+  <h2 class="section-title">Color in video</h2>
+  <p class="section-intro">Video backgrounds, overlays, and text colors follow specific rules. These keep the brand consistent whether you're doing a talking-head video, motion graphic, or Reel.</p>
+
+  <div class="vc-grid">
+    <div class="vc-block">
+      <div class="vc-top" style="background: linear-gradient(135deg, #0b8c88, #1eb085);">
+        <span style="color:white; font-size:12px; font-weight:600; opacity:0.8;">GRADIENT</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-name">Primary Gradient</div>
+        <div class="vc-hex">#0b8c88 → #1eb085</div>
+        <div class="vc-use">Intro/outro backgrounds, CTA slides, brand accent bars, text on dark bg</div>
+      </div>
+    </div>
+    <div class="vc-block">
+      <div class="vc-top" style="background: #054f4d;">
+        <span style="color:rgba(255,255,255,0.5); font-size:12px; font-weight:600;">TEAL DEEP</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-name">Teal Deeper</div>
+        <div class="vc-hex">#054f4d</div>
+        <div class="vc-use">Dark video backgrounds that still feel on-brand; Reels bg, lower-thirds bg</div>
+      </div>
+    </div>
+    <div class="vc-block">
+      <div class="vc-top" style="background: #1A1A1A;">
+        <span style="color:rgba(255,255,255,0.4); font-size:12px; font-weight:600;">NEAR BLACK</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-name">Near Black</div>
+        <div class="vc-hex">#1A1A1A</div>
+        <div class="vc-use">Neutral dark backgrounds; talking head overlays; caption backgrounds</div>
+      </div>
+    </div>
+    <div class="vc-block">
+      <div class="vc-top" style="background: rgba(26,26,26,0.75); backdrop-filter:blur(4px);">
+        <span style="color:rgba(255,255,255,0.5); font-size:12px; font-weight:600;">OVERLAY</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-name">Dark Overlay</div>
+        <div class="vc-hex">#1A1A1A at 70–80% opacity</div>
+        <div class="vc-use">Placed beneath text on busy footage to guarantee readability</div>
+      </div>
+    </div>
+    <div class="vc-block">
+      <div class="vc-top" style="background: #FFFFFF; border: 1px solid #ebebeb;">
+        <span style="color:#6B6B6B; font-size:12px; font-weight:600;">WHITE</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-name">White</div>
+        <div class="vc-hex">#FFFFFF</div>
+        <div class="vc-use">Primary text color on all dark and gradient backgrounds in video</div>
+      </div>
+    </div>
+    <div class="vc-block">
+      <div class="vc-top" style="background: #1eb085;">
+        <span style="color:white; font-size:12px; font-weight:600;">TEAL LIGHT</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-name">Teal Light</div>
+        <div class="vc-hex">#1eb085</div>
+        <div class="vc-use">Eyebrow labels, key stat highlights, gradient bars, icon fills in video</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>✓ Video Color Do</h4>
+      <ul>
+        <li>Open and close every video with the gradient in some form — title card, bar, or full background</li>
+        <li>Use the gradient accent bar (3–5px) at the top or bottom of slides and text overlays</li>
+        <li>Use Teal Light (#1eb085) to highlight numbers, labels, and key moments</li>
+        <li>Place a dark overlay behind any text on footage — never put text directly on raw video</li>
+        <li>Keep backgrounds either gradient, deep teal, or near-black for brand consistency</li>
+        <li>Use white as the primary text color in all video content</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>✗ Video Color Don't</h4>
+      <ul>
+        <li>Do not use CapCut's default color presets — they are rarely on-brand</li>
+        <li>Do not use yellow, orange, red, or pink text or highlights</li>
+        <li>Do not put white text directly on raw, bright, or light-colored footage</li>
+        <li>Do not use pure black backgrounds — use Near Black (#1A1A1A)</li>
+        <li>Do not use gradient text effects on small or body-sized type — only on large display text</li>
+        <li>Do not add colored drop shadows, glows, or neon effects</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Video Layout Rules</p>
+  <h2 class="section-title">Layout and composition in video</h2>
+
+  <div class="rules-block">
+    <h4>Safe Zones & Text Placement</h4>
+    <div class="rule-item"><div class="rule-dot"></div><span>Keep all text within the inner 80% of the frame — never crowd the edges, especially on mobile-viewed content where UI elements may overlap</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>For vertical (9:16) formats, keep main text in the lower 60% of the frame — the top is often covered by platform UI</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Brand watermark/credit goes in the bottom-right corner, always</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Captions should sit centered, mid-to-lower frame, with a semi-transparent dark pill or bar behind them</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Lower-thirds for speaker names should appear in the bottom-left, with a gradient bar as the left border</span></div>
+  </div>
+
+  <div class="rules-block">
+    <h4>Intro & Outro Standards</h4>
+    <div class="rule-item"><div class="rule-dot"></div><span>Every video intro should establish brand identity within the first 3 seconds — use logo, gradient bar, or branded title card</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Outro slide should always include the logo, a CTA, and the gradient as the background or accent</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Transition effects should be clean — cuts, simple fades, or subtle slides. No spinning, glitch, or flashy presets</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Avoid CapCut's trending sticker packs and animated emoji overlays — they are not on-brand</span></div>
+  </div>
+
+  <div class="rules-block">
+    <h4>On-Screen Text Readability</h4>
+    <div class="rule-item"><div class="rule-dot"></div><span>Minimum body/caption font size: 16px equivalent in CapCut — anything smaller is unreadable on mobile</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Never use a font weight below Regular (400) in video — thin text disappears on most screens</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Maximum of 2 text layers visible at once on screen — headline plus caption, or eyebrow plus headline</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>If auto-captions are used, change the default CapCut style to match brand colors — white text, dark background, DM Sans or Poppins if possible</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Platform Formats</p>
+  <h2 class="section-title">Size and format reference</h2>
+
+  <table>
+    <thead>
+      <tr><th>Format</th><th>Ratio</th><th>Resolution</th><th>Primary Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Landscape</strong></td><td>16:9</td><td>1920×1080</td><td>YouTube, LinkedIn video, website embeds</td></tr>
+      <tr><td><strong>Portrait / Reels</strong></td><td>9:16</td><td>1080×1920</td><td>Instagram Reels, TikTok, YouTube Shorts, Facebook Reels</td></tr>
+      <tr><td><strong>Square</strong></td><td>1:1</td><td>1080×1080</td><td>Instagram feed posts, Facebook feed</td></tr>
+      <tr><td><strong>Portrait Story</strong></td><td>4:5</td><td>1080×1350</td><td>Instagram feed portrait, LinkedIn portrait</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="gradient-divider"></div>
+
+<!-- CHAPTER 4: BRAND VOICE -->
+<div class="chapter">
+  <div class="chapter-num">04</div>
+  <h2>Brand Voice & Tone</h2>
+  <p>How Boltzmenn speaks — in copy, captions, scripts, and all written communication.</p>
+</div>
+
+<div class="page">
+  <p class="section-label">Voice</p>
+  <h2 class="section-title">How we sound</h2>
+  <p class="section-intro">The Boltzmenn voice is the verbal equivalent of the visual brand: calm, sharp, structured, and grounded. It should feel like talking to a very smart, experienced business partner — not a motivational speaker, not a corporate robot.</p>
+
+  <div class="do-dont">
+    <div class="do-box">
+      <h4>✓ Boltzmenn sounds like</h4>
+      <ul>
+        <li>Practical and commercially aware</li>
+        <li>Calm and observant — we notice what others miss</li>
+        <li>Intelligent without being academic or jargon-heavy</li>
+        <li>Grounded in African business reality</li>
+        <li>Honest about problems — we don't sugarcoat</li>
+        <li>Confident but never arrogant</li>
+        <li>Supportive but direct — we tell you what you need to hear</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <h4>✗ Boltzmenn does not sound like</h4>
+      <ul>
+        <li>"Let's go! Crush it! Hustle harder!"</li>
+        <li>"We leverage synergistic growth paradigms..."</li>
+        <li>"Your dreams are valid. Believe and achieve!"</li>
+        <li>"We're disrupting the African business ecosystem!"</li>
+        <li>Social media agency slang and trend-chasing language</li>
+        <li>Vague promises with no commercial substance</li>
+        <li>Overly formal or stiff corporate language</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>The test for every caption, script, and headline:</strong> Read it aloud. Does it sound like a sharp, trustworthy business advisor? Or does it sound like a generic Instagram post or a corporate brochure? If it's the latter, rewrite it.
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Writing Rules</p>
+  <h2 class="section-title">Copy guidelines</h2>
+
+  <div class="rules-block">
+    <h4>For Video Scripts & Captions</h4>
+    <div class="rule-item"><div class="rule-dot"></div><span>Open with a specific, real problem — not a generic motivational hook. "Most African businesses don't fail from lack of effort" beats "Are you struggling in business?"</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Use short sentences in scripts. One idea per sentence. It lands harder on video.</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Avoid hashtag spam in captions — 3 to 5 relevant hashtags maximum</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>End videos with a specific, single CTA — not three different asks at once</span></div>
+    <div class="rule-item"><div class="rule-dot"></div><span>Name the audience clearly in the opening — "If you run a small business in Nigeria..." immediately filters in the right viewer</span></div>
+  </div>
+</div>
+
+<div class="gradient-divider"></div>
+
+<!-- CHAPTER 5: QUICK REF -->
+<div class="chapter">
+  <div class="chapter-num">05</div>
+  <h2>Quick Reference</h2>
+  <p>Everything on one page. Print this or screenshot it for fast access.</p>
+</div>
+
+<div class="page">
+  <h2 class="section-title" style="margin-bottom:32px;">Brand at a glance</h2>
+
+  <table>
+    <thead><tr><th>Element</th><th>Approved Choice</th><th>Never Use</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Primary Gradient</strong></td><td>#0b8c88 → #1eb085 (135°)</td><td>Other gradients, competing colors alongside it</td></tr>
+      <tr><td><strong>Background</strong></td><td>White, Ash, Near Black, Teal Deep</td><td>Pure black, busy patterns, random colors</td></tr>
+      <tr><td><strong>Text on light bg</strong></td><td>Near Black, Grey Dark, Teal Dark</td><td>Yellow, red, bright colors</td></tr>
+      <tr><td><strong>Text on dark/gradient bg</strong></td><td>White only</td><td>Grey, colored text</td></tr>
+      <tr><td><strong>Heading Font</strong></td><td>Satoshi Bold / Gotham Bold</td><td>Montserrat, Roboto, Arial, script fonts</td></tr>
+      <tr><td><strong>Body / Caption Font</strong></td><td>DM Sans Regular–Medium</td><td>Decorative fonts, serif fonts in digital</td></tr>
+      <tr><td><strong>Video Fallback Font</strong></td><td>Poppins SemiBold / Regular</td><td>CapCut default decorative fonts</td></tr>
+      <tr><td><strong>Video Accent Color</strong></td><td>Teal Light #1eb085</td><td>Yellow, orange, pink, neon</td></tr>
+      <tr><td><strong>Brand Tone</strong></td><td>Calm, practical, intelligent, direct</td><td>Hyped, vague, corporate, motivational-speaker</td></tr>
+      <tr><td><strong>Visual Style</strong></td><td>Clean, structured, whitespace-heavy</td><td>Cluttered, flashy, luxury clichés, neon</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>One sentence to remember:</strong> Every Boltzmenn output — visual, video, or written — should feel like it came from a company that understands business deeply, takes it seriously, and doesn't need to shout to get attention.
+  </div>
+
+  <div style="margin-top:48px;">
+    <p style="font-size:12px; color:var(--grey-mid);">Questions about brand usage? Raise them before publishing — not after. When in doubt, keep it clean, keep it structured, and keep the gradient visible.</p>
+  </div>
+</div>
+
+<div class="gradient-divider"></div>
+
+<!-- FOOTER -->
+<div class="guide-footer">
+  <p><strong>Boltzmenn</strong> &nbsp;·&nbsp; Brand Guide v1.0 &nbsp;·&nbsp; April 2026</p>
+  <p style="margin-top:8px;">Internal document. Do not distribute outside of approved Boltzmenn team members and contracted freelancers.</p>
+</div>
+
+</body>
+</html>

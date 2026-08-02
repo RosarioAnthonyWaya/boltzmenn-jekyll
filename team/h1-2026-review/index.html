@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boltzmenn Midyear Appraisal — H1 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root{
+  --teal:#0b8c88;
+  --green:#1eb085;
+  --ash:#F5F5F5;
+  --grey:#6B6B6B;
+  --dark:#12201f;
+  --white:#ffffff;
+  --danger:#b3452f;
+  --radius:14px;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'DM Sans', sans-serif;
+  background:var(--ash);
+  color:var(--dark);
+  line-height:1.55;
+}
+h1,h2,h3{ font-family:'DM Serif Display', serif; font-weight:400; margin:0 0 8px 0; }
+.wrap{ max-width:760px; margin:0 auto; padding:32px 20px 80px; }
+.hero{
+  background:linear-gradient(135deg, var(--teal), var(--green));
+  color:#fff; padding:36px 24px; border-radius:var(--radius); margin-bottom:28px;
+}
+.hero h1{ font-size:1.9rem; color:#fff; }
+.hero p{ margin:6px 0 0; opacity:.92; font-size:.98rem; }
+.eyebrow{ font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; opacity:.85; margin-bottom:6px; }
+
+.card{
+  background:#fff; border-radius:var(--radius); padding:24px;
+  box-shadow:0 1px 3px rgba(0,0,0,.06); margin-bottom:18px;
+}
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media (max-width:560px){ .grid{ grid-template-columns:1fr; } }
+
+.person-btn{
+  display:block; width:100%; text-align:left; border:1px solid #e6e6e6;
+  background:#fff; border-radius:var(--radius); padding:18px; cursor:pointer;
+  transition:.15s; font-family:'DM Sans',sans-serif;
+}
+.person-btn:hover{ border-color:var(--green); box-shadow:0 2px 10px rgba(30,176,133,.15); }
+.person-btn .name{ font-weight:700; font-size:1.05rem; }
+.person-btn .role{ color:var(--grey); font-size:.88rem; margin-top:2px; }
+
+label{ display:block; font-weight:600; font-size:.92rem; margin:16px 0 6px; }
+.hint{ color:var(--grey); font-size:.82rem; margin-top:-2px; margin-bottom:4px; font-weight:400; }
+input[type=text], input[type=number], input[type=date], textarea, select{
+  width:100%; padding:11px 12px; border:1px solid #d9d9d9; border-radius:10px;
+  font-family:'DM Sans',sans-serif; font-size:.95rem; background:#fafafa;
+}
+textarea{ min-height:80px; resize:vertical; }
+input:focus, textarea:focus, select:focus{ outline:2px solid var(--green); border-color:var(--green); background:#fff; }
+
+.scale{ display:flex; gap:8px; margin-top:4px; }
+.scale label{ margin:0; font-weight:500; flex:1; text-align:center; cursor:pointer; }
+.scale input{ display:none; }
+.scale span{
+  display:block; padding:10px 4px; border:1px solid #d9d9d9; border-radius:10px;
+  background:#fafafa; font-size:.85rem; transition:.12s;
+}
+.scale input:checked + span{ background:var(--green); color:#fff; border-color:var(--green); font-weight:700; }
+
+.note-box{
+  background:#fdf3ef; border-left:4px solid var(--danger); border-radius:10px;
+  padding:14px 16px; margin:16px 0; font-size:.92rem;
+}
+.note-box .tag{ font-weight:700; color:var(--danger); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
+
+.anon-box{
+  background:#eefaf6; border-left:4px solid var(--green); border-radius:10px;
+  padding:14px 16px; margin-bottom:18px; font-size:.88rem; color:#0f5d52;
+}
+
+.btn{
+  display:inline-block; background:linear-gradient(135deg,var(--teal),var(--green));
+  color:#fff; border:none; padding:13px 26px; border-radius:10px; font-size:.95rem;
+  font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif;
+}
+.btn.secondary{ background:#fff; color:var(--teal); border:1px solid var(--teal); }
+.btn.small{ padding:8px 16px; font-size:.85rem; }
+.row-btns{ display:flex; justify-content:space-between; margin-top:22px; gap:10px; }
+
+.progress{ display:flex; gap:6px; margin-bottom:20px; }
+.progress div{ height:5px; flex:1; background:#e2e2e2; border-radius:3px; }
+.progress div.done{ background:var(--green); }
+.progress div.current{ background:var(--teal); }
+
+.step-label{ color:var(--grey); font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; font-weight:700; margin-bottom:4px;}
+
+table{ width:100%; border-collapse:collapse; font-size:.88rem; margin-top:8px;}
+td,th{ border-bottom:1px solid #eee; padding:8px 6px; text-align:left; vertical-align:top;}
+th{ color:var(--grey); font-weight:700; font-size:.78rem; text-transform:uppercase;}
+
+.score-pill{ display:inline-block; background:var(--ash); border-radius:20px; padding:4px 12px; font-weight:700; color:var(--teal); font-size:.85rem;}
+.tabbar{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+.tab{ padding:9px 16px; border-radius:20px; border:1px solid #ddd; background:#fff; cursor:pointer; font-size:.85rem; font-weight:600;}
+.tab.active{ background:var(--dark); color:#fff; border-color:var(--dark); }
+.link-btn{ background:none; border:none; color:var(--teal); font-weight:700; cursor:pointer; padding:0; font-family:'DM Sans',sans-serif; }
+.muted{ color:var(--grey); font-size:.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ---------------- DATA ---------------- */
+const PEOPLE = {
+  blessed: { name:"Blessed Osunde", role:"Client & Partnerships Officer" },
+  tolu:    { name:"Tolu Badejo",     role:"Ads Manager" },
+  lucy:    { name:"Lucy Osunde",     role:"Content Creator" },
+  michael: { name:"Michael Kuzoma",  role:"Automations Specialist" }
+};
+function othersOf(id){ return Object.keys(PEOPLE).filter(k=>k!==id); }
+const REALITY_CHECK = {
+  blessed: "My observation this half: client response times and reporting have been consistently late, and there's a visible gap in your handle on what Boltzmenn is currently doing beyond your own workstream.",
+  tolu: "My observation this half: no ad campaigns have run, and no proactive ideas have come forward on ads or content without being asked.",
+  michael: "My observation this half: you're generally waiting for direction rather than identifying automation opportunities on your own."
+};
+
+function esc(v){ return (v||"").toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
+
+/* ---------------- STORAGE HELPERS ---------------- */
+async function getJSON(key, shared){
+  try{ const r = await window.storage.get(key, shared); return r ? JSON.parse(r.value) : null; }
+  catch(e){ return null; }
+}
+async function mergeSave(key, patch, shared){
+  const existing = await getJSON(key, shared) || {};
+  const merged = Object.assign({}, existing, patch);
+  try{ await window.storage.set(key, JSON.stringify(merged), shared); }catch(e){ console.error(e); }
+  return merged;
+}
+async function listPrefix(prefix, shared){
+  try{ const r = await window.storage.list(prefix, shared); return r ? r.keys : []; }
+  catch(e){ return []; }
+}
+
+/* ---------------- STATE ---------------- */
+let state = { view:"landing", person:null, adminOk:false, adminTab:"blessed", peerIndex:0 };
+const app = document.getElementById("app");
+
+function progressBar(current,total){
+  let html = '<div class="progress">';
+  for(let i=1;i<=total;i++){
+    html += `<div class="${i<current?'done':(i===current?'current':'')}"></div>`;
+  }
+  return html + '</div>';
+}
+
+function scaleInput(name, labelText, hintText, existing){
+  let opts = [1,2,3,4,5].map(n=>`
+    <label><input type="radio" name="${name}" value="${n}" ${existing==n?"checked":""} required><span>${n}</span></label>`).join("");
+  return `<label>${labelText}</label>${hintText?`<div class="hint">${hintText}</div>`:""}<div class="scale">${opts}</div>`;
+}
+
+function ta(name,labelText,hintText,existing,placeholder){
+  return `<label>${labelText}</label>${hintText?`<div class="hint">${hintText}</div>`:""}
+  <textarea name="${name}" placeholder="${placeholder||''}" required>${esc(existing)}</textarea>`;
+}
+function txt(name,labelText,hintText,existing,placeholder){
+  return `<label>${labelText}</label>${hintText?`<div class="hint">${hintText}</div>`:""}
+  <input type="text" name="${name}" value="${esc(existing)}" placeholder="${placeholder||''}" required>`;
+}
+
+/* ---------------- LANDING ---------------- */
+function renderLanding(){
+  app.innerHTML = `
+    <div class="hero">
+      <div class="eyebrow">Boltzmenn · Internal</div>
+      <h1>Midyear Appraisal — H1 2026</h1>
+      <p>Self-assessment, peer review, and manager evaluation. Honest answers help everyone, including you.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:14px;">Who are you?</h3>
+      <div class="grid">
+        ${Object.keys(PEOPLE).map(id=>`
+          <button class="person-btn" data-id="${id}">
+            <div class="name">${PEOPLE[id].name}</div>
+            <div class="role">${PEOPLE[id].role}</div>
+          </button>`).join("")}
+        <button class="person-btn" data-id="admin">
+          <div class="name">Anthony</div>
+          <div class="role">Manager / Admin dashboard</div>
+        </button>
+      </div>
+    </div>
+  `;
+  app.querySelectorAll(".person-btn").forEach(b=>{
+    b.onclick = ()=>{
+      const id = b.dataset.id;
+      if(id === "admin"){ state.view="admingate"; render(); }
+      else { state.view="self1"; state.person=id; state.peerIndex=0; render(); }
+    };
+  });
+}
+
+/* ---------------- SELF STEP 1: Goals & Delivery ---------------- */
+async function renderSelf1(){
+  const id = state.person;
+  const p = PEOPLE[id];
+  const existing = await getJSON(`self:${id}`, true) || {};
+  let roleBlock = "";
+
+  if(id==="blessed"){
+    roleBlock = `
+      ${txt("activeClients","How many active clients do you currently manage?","",existing.activeClients)}
+      ${ta("churn","How many clients have churned or paused in the last 6 months, and why (in your own words)?","",existing.churn)}
+      ${ta("satisfaction","What's your client satisfaction read? If you track NPS or a similar score, state it. If you're not tracking it, say so directly.","",existing.satisfaction)}
+      ${ta("atRiskClients","Name the specific client(s) who are currently unhappy, at risk, or have raised complaints. Status of each?","",existing.atRiskClients)}
+      ${ta("onboardingProcess","Walk through your onboarding process for a new client — where does it break down under time pressure?","",existing.onboardingProcess)}
+      ${ta("responseTime","On average, how many hours does it take you to respond to a client message? Be honest, not aspirational.","",existing.responseTime)}
+      ${ta("reportingPattern","Are reports going out on the agreed schedule? If not, describe the actual pattern.","",existing.reportingPattern)}
+    `;
+  } else if(id==="tolu"){
+    roleBlock = `
+      ${ta("ranCampaign","Have you run any ad campaigns this half? If not, what's the actual reason?","",existing.ranCampaign)}
+      ${txt("lastCampaignDate","State the exact date of the last ad campaign you launched. If none this half, say so directly.","",existing.lastCampaignDate)}
+      ${ta("underperformed","Which campaigns underperformed, and what did you actually change vs letting them run?","",existing.underperformed)}
+      ${ta("budgetCut","Where is budget currently going that you'd cut if forced to prove ROI today?","",existing.budgetCut)}
+      ${ta("proactiveIdea","What's one ad or content idea you brought to Anthony without being asked?","",existing.proactiveIdea)}
+    `;
+  } else if(id==="lucy"){
+    roleBlock = `
+      ${ta("contentOutcome","Which piece of content this half actually drove a business outcome (lead, DM, booking) — not just engagement?","",existing.contentOutcome)}
+      ${ta("deadlineConsistency","Are you hitting deadlines consistently? If not, where's the bottleneck?","",existing.deadlineConsistency)}
+      ${ta("genericVsVoice","Where are you relying on generic drafts vs original Boltzmenn voice?","",existing.genericVsVoice)}
+    `;
+  } else if(id==="michael"){
+    roleBlock = `
+      ${ta("fragileAutomations","What's currently automated that's fragile — breaks if one thing upstream changes?","",existing.fragileAutomations)}
+      ${ta("manualBottleneck","What manual process still exists that's costing the team the most hours?","",existing.manualBottleneck)}
+      ${ta("securityChecklist","For the EOD/BoltzFinance app: actual current state of HTTPS, database encryption, OTP verification, input sanitization, rate limiting, and anomaly flagging vs 'planned'?","",existing.securityChecklist)}
+      ${ta("lastProposedDates","List the last 3 automations you proposed without being asked, with dates. If none, say so.","",existing.lastProposedDates)}
+    `;
+  }
+
+  let realityBlock = "";
+  if(REALITY_CHECK[id]){
+    realityBlock = `
+      <div class="note-box">
+        <div class="tag">Manager observation — respond directly</div>
+        <p>${REALITY_CHECK[id]}</p>
+      </div>
+      ${ta("realityResponse","What's your account of this? Push back if it's inaccurate — but be specific either way.","",existing.realityResponse)}
+      ${ta("realityChange","What specifically changes in the next 30 days?","",existing.realityChange)}
+    `;
+  }
+
+  app.innerHTML = `
+    <div class="hero"><div class="eyebrow">${p.name} · ${p.role}</div><h1>Self-Assessment</h1><p>Step 1 of 6 — Goals &amp; Delivery</p></div>
+    ${progressBar(1,6)}
+    <div class="card">
+      <form id="f1">
+        ${ta("wins","What were your 2–3 biggest wins in H1 2026?","",existing.wins)}
+        ${ta("missed","What's one thing you committed to that you didn't deliver, and why?","",existing.missed)}
+        ${ta("qualitySpread","Where has your output quality been strongest / weakest this half?","",existing.qualitySpread)}
+        ${scaleInput("overallDelivery","Overall, how would you rate your delivery against your H1 goals?","1 = missed most goals, 5 = exceeded goals",existing.overallDelivery)}
+
+        <hr style="margin:22px 0;border:none;border-top:1px solid #eee;">
+        ${ta("proactiveList","List 3 things you did in the last 30 days that nobody asked you to do.","If you can't think of 3, list what you have — that's useful information too.",existing.proactiveList)}
+        ${ta("businessAwareness","Without checking any dashboard, message, or asking anyone — in 3–4 sentences, what is Boltzmenn currently working on right now, beyond your own task list?","",existing.businessAwareness)}
+        ${scaleInput("proactivityScore","Rate your own proactivity this half.","1 = mostly waited for instructions, 5 = mostly initiated work myself",existing.proactivityScore)}
+        ${ta("deliverablesList","List every deliverable you completed in the last 30 days, with dates.","Be specific — dated and named. This gets cross-checked.",existing.deliverablesList)}
+        ${ta("roleFuture","If nothing changes about how you work between now and December, what happens to your role?","",existing.roleFuture)}
+
+        ${roleBlock}
+        ${realityBlock}
+
+        <div class="row-btns">
+          <button type="button" class="btn secondary" id="back">Back</button>
+          <button type="submit" class="btn">Save &amp; Continue</button>
+        </div>
+      </form>
+    </div>
+  `;
+  document.getElementById("back").onclick = ()=>{ state.view="landing"; render(); };
+  document.getElementById("f1").onsubmit = async (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const patch = {}; for(const [k,v] of fd.entries()) patch[k]=v;
+    await mergeSave(`self:${id}`, patch, true);
+    state.view="self2"; render();
+  };
+}
+
+/* ---------------- SELF STEP 2: Skills & Growth ---------------- */
+async function renderSelf2(){
+  const id = state.person; const p = PEOPLE[id];
+  const existing = await getJSON(`self:${id}`, true) || {};
+  app.innerHTML = `
+    <div class="hero"><div class="eyebrow">${p.name} · ${p.role}</div><h1>Self-Assessment</h1><p>Step 2 of 6 — Skills &amp; Growth</p></div>
+    ${progressBar(2,6)}
+    <div class="card">
+      <form id="f2">
+        ${ta("workloadSplit","On a typical week, what % of your time goes to reactive/firefighting work vs planned work?","",existing.workloadSplit)}
+        ${ta("shouldntBeOnPlate","What's currently on your plate that shouldn't be?","",existing.shouldntBeOnPlate)}
+        ${ta("skillGap","What skill gap is limiting you most right now?","",existing.skillGap)}
+        ${ta("supportNeeded","What do you need from Anthony or Boltzmenn in H2 that you're not getting?","",existing.supportNeeded)}
+        ${scaleInput("confidenceScore","How confident are you in your core role skills right now?","",existing.confidenceScore)}
+        <div class="row-btns">
+          <button type="button" class="btn secondary" id="back">Back</button>
+          <button type="submit" class="btn">Save &amp; Continue</button>
+        </div>
+      </form>
+    </div>
+  `;
+  document.getElementById("back").onclick = ()=>{ state.view="self1"; render(); };
+  document.getElementById("f2").onsubmit = async (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target); const patch={}; for(const [k,v] of fd.entries()) patch[k]=v;
+    await mergeSave(`self:${id}`, patch, true);
+    state.view="supervisor"; render();
+  };
+}
+
+/* ---------------- SUPERVISOR RATING (anonymized) ---------------- */
+function renderSupervisor(){
+  const id = state.person; const p = PEOPLE[id];
+  app.innerHTML = `
+    <div class="hero"><div class="eyebrow">${p.name} · ${p.role}</div><h1>Rate Your Supervisor</h1><p>Step 3 of 6</p></div>
+    ${progressBar(3,6)}
+    <div class="anon-box">This section is anonymized. Your name is not stored with these answers — they're pooled with everyone else's before Anthony sees them.</div>
+    <div class="card">
+      <form id="f3">
+        ${scaleInput("clarityScore","Clarity of direction — do you consistently know what's expected of you?","",null)}
+        ${scaleInput("availabilityScore","Availability / support — can you get what you need from Anthony when you need it?","",null)}
+        ${scaleInput("feedbackScore","Feedback quality — do you know where you stand with him?","",null)}
+        ${ta("comment","What's one thing Anthony could do differently that would help you perform better?","",null)}
+        <div class="row-btns">
+          <button type="button" class="btn secondary" id="back">Back</button>
+          <button type="submit" class="btn">Submit anonymously &amp; Continue</button>
+        </div>
+      </form>
+    </div>
+  `;
+  document.getElementById("back").onclick = ()=>{ state.view="self2"; render(); };
+  document.getElementById("f3").onsubmit = async (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target); const patch={}; for(const [k,v] of fd.entries()) patch[k]=v;
+    const key = `supervisor_rating:${Date.now()}_${Math.random().toString(36).slice(2,8)}`;
+    try{ await window.storage.set(key, JSON.stringify(patch), true); }catch(err){ console.error(err); }
+    state.view="peer"; render();
+  };
+}
+
+/* ---------------- PEER REVIEW (everyone reviews everyone) ---------------- */
+async function renderPeer(){
+  const id = state.person; const p = PEOPLE[id];
+  const others = othersOf(id);
+  const totalSteps = 3 + others.length;
+  if(state.peerIndex >= others.length){ state.view="done"; render(); return; }
+  const peerId = others[state.peerIndex]; const peer = PEOPLE[peerId];
+  const existing = await getJSON(`peer_review:${peerId}:${id}`, true) || {};
+  app.innerHTML = `
+    <div class="hero"><div class="eyebrow">${p.name} reviewing ${peer.name}</div><h1>Peer Review</h1><p>Reviewing teammate ${state.peerIndex+1} of ${others.length}</p></div>
+    ${progressBar(3+state.peerIndex+1, totalSteps)}
+    <div class="card">
+      <form id="f4">
+        ${scaleInput("reliabilityScore","Reliability — do they deliver what they say, when they say?","",existing.reliabilityScore)}
+        ${scaleInput("communicationScore","Communication — clear and responsive?","",existing.communicationScore)}
+        ${scaleInput("collaborationScore","Collaboration — how well do they work when things depend on them?","",existing.collaborationScore)}
+        ${ta("handoffBreakdown","Where does the handoff with this person break down, if anywhere?","",existing.handoffBreakdown)}
+        ${ta("specificExample","Give one specific example — good or bad — of working with this person this half.","",existing.specificExample)}
+        <div class="row-btns">
+          <button type="button" class="btn secondary" id="back">Back</button>
+          <button type="submit" class="btn">${state.peerIndex < others.length-1 ? "Save & Next Teammate" : "Submit Final Review"}</button>
+        </div>
+      </form>
+    </div>
+  `;
+  document.getElementById("back").onclick = ()=>{
+    if(state.peerIndex>0){ state.peerIndex--; render(); }
+    else { state.view="supervisor"; render(); }
+  };
+  document.getElementById("f4").onsubmit = async (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target); const patch={}; for(const [k,v] of fd.entries()) patch[k]=v;
+    await mergeSave(`peer_review:${peerId}:${id}`, patch, true);
+    state.peerIndex++;
+    if(state.peerIndex >= others.length){ state.view="done"; }
+    render();
+  };
+}
+
+function renderDone(){
+  const p = PEOPLE[state.person];
+  app.innerHTML = `
+    <div class="hero"><h1>Done — thank you, ${p.name.split(" ")[0]}</h1><p>Your midyear appraisal has been submitted.</p></div>
+    <div class="card">
+      <p class="muted">Anthony will follow up with the manager review and growth plan directly with you.</p>
+      <button class="btn secondary" id="restart">Back to start</button>
+    </div>
+  `;
+  document.getElementById("restart").onclick = ()=>{ state = {view:"landing", person:null, adminOk:false, adminTab:"blessed"}; render(); };
+}
+
+/* ---------------- ADMIN GATE ---------------- */
+function renderAdminGate(){
+  app.innerHTML = `
+    <div class="hero"><h1>Admin Dashboard</h1><p>Enter access code</p></div>
+    <div class="card">
+      <form id="fgate">
+        ${txt("code","Access code","",null,"")}
+        <div class="row-btns">
+          <button type="button" class="btn secondary" id="back">Back</button>
+          <button type="submit" class="btn">Enter</button>
+        </div>
+      </form>
+    </div>
+  `;
+  document.getElementById("back").onclick = ()=>{ state.view="landing"; render(); };
+  document.getElementById("fgate").onsubmit = (e)=>{
+    e.preventDefault();
+    const code = new FormData(e.target).get("code");
+    if(code === "BOLTZ-ADMIN"){ state.adminOk=true; state.view="admin"; render(); }
+    else alert("Incorrect code.");
+  };
+}
+
+/* ---------------- ADMIN DASHBOARD ---------------- */
+async function renderAdmin(){
+  if(!state.adminOk){ renderAdminGate(); return; }
+  const activeTab = state.adminTab;
+
+  let tabsHtml = Object.keys(PEOPLE).map(id=>`<div class="tab ${id===activeTab?'active':''}" data-id="${id}">${PEOPLE[id].name.split(" ")[0]}</div>`).join("")
+    + `<div class="tab ${activeTab==='supervisor'?'active':''}" data-id="supervisor">Supervisor Feedback</div>`;
+
+  app.innerHTML = `
+    <div class="hero"><div class="eyebrow">Anthony · Manager</div><h1>Admin Dashboard</h1><p>Midyear Appraisal — H1 2026</p></div>
+    <div style="margin-bottom:14px;"><button class="btn small secondary" id="exportBtn">⤓ Export All Data (backup)</button></div>
+    <div class="tabbar">${tabsHtml}</div>
+    <div id="admin-body"><p class="muted">Loading…</p></div>
+  `;
+  document.getElementById("exportBtn").onclick = exportAllData;
+  app.querySelectorAll(".tab").forEach(t=>{
+    t.onclick = ()=>{ state.adminTab = t.dataset.id; render(); };
+  });
+
+  const body = document.getElementById("admin-body");
+  if(activeTab === "supervisor"){
+    const keys = await listPrefix("supervisor_rating:", true);
+    const records = [];
+    for(const k of keys){ const r = await getJSON(k, true); if(r) records.push(r); }
+    const avg = (field)=>{
+      const vals = records.map(r=>Number(r[field])).filter(n=>!isNaN(n));
+      if(!vals.length) return "—";
+      return (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1);
+    };
+    body.innerHTML = `
+      <div class="card">
+        <h3>Anonymized — ${records.length} of 4 submitted</h3>
+        <table>
+          <tr><th>Clarity of direction</th><td><span class="score-pill">${avg('clarityScore')}/5</span></td></tr>
+          <tr><th>Availability / support</th><td><span class="score-pill">${avg('availabilityScore')}/5</span></td></tr>
+          <tr><th>Feedback quality</th><td><span class="score-pill">${avg('feedbackScore')}/5</span></td></tr>
+        </table>
+        <h3 style="margin-top:20px;">Comments (unattributed)</h3>
+        ${records.map(r=>`<p class="muted" style="border-left:3px solid var(--green);padding-left:10px;margin:10px 0;">${esc(r.comment)||'<em>no comment</em>'}</p>`).join("") || '<p class="muted">No submissions yet.</p>'}
+      </div>
+    `;
+    return;
+  }
+
+  const id = activeTab;
+  const self = await getJSON(`self:${id}`, true) || {};
+  const mgr = await getJSON(`manager_review:${id}`, true) || {};
+  const reviewerIds = othersOf(id);
+  const peerReviews = {};
+  for(const revId of reviewerIds){ peerReviews[revId] = await getJSON(`peer_review:${id}:${revId}`, true); }
+
+  const selfRows = Object.keys(self).length
+    ? Object.entries(self).map(([k,v])=>`<tr><th>${k}</th><td>${esc(v)}</td></tr>`).join("")
+    : `<tr><td class="muted">Not yet submitted</td></tr>`;
+
+  const peerCardsHtml = reviewerIds.map(revId=>{
+    const rev = peerReviews[revId];
+    const rows = rev ? Object.entries(rev).map(([k,v])=>`<tr><th>${k}</th><td>${esc(v)}</td></tr>`).join("")
+      : `<tr><td class="muted">Not yet submitted</td></tr>`;
+    return `<h4 style="margin-top:14px;font-family:'DM Sans';font-size:.9rem;color:var(--teal);">From ${PEOPLE[revId].name}</h4><table>${rows}</table>`;
+  }).join("");
+
+  body.innerHTML = `
+    <div class="card">
+      <h3>${PEOPLE[id].name} — Self-Assessment</h3>
+      <table>${selfRows}</table>
+    </div>
+    <div class="card">
+      <h3>Peer Reviews received (${reviewerIds.filter(r=>peerReviews[r]).length} of ${reviewerIds.length} submitted)</h3>
+      ${peerCardsHtml}
+    </div>
+    <div class="card">
+      <h3>Manager Review — fill in</h3>
+      <form id="fmgr">
+        ${scaleInput("ownershipScore","Ownership — catches problems before they escalate","",mgr.ownershipScore)}
+        ${scaleInput("qualityScore","Quality of output","",mgr.qualityScore)}
+        ${scaleInput("reliabilityScore","Reliability — delivers on commitments","",mgr.reliabilityScore)}
+        ${scaleInput("collaborationScore","Collaboration with the team","",mgr.collaborationScore)}
+        ${ta("bigWinMiss","In your own words — biggest win and biggest miss this half.","",mgr.bigWinMiss)}
+        ${ta("crossCheck","Independent cross-check: does the self-assessment above match what you're actually seeing?","",mgr.crossCheck)}
+        <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+        <h3 style="font-size:1.1rem;">Growth Plan</h3>
+        ${ta("changesH2","What changes for this person in H2?","",mgr.changesH2)}
+        ${ta("supportProvided","What support will you provide?","",mgr.supportProvided)}
+        ${ta("roleImplications","Any role, scope, or compensation implications?","",mgr.roleImplications)}
+        <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+        <h3 style="font-size:1.1rem;">30-Day Commitment Tracker</h3>
+        <div class="hint">Specific, dated commitments — this is the documentation trail if performance doesn't move.</div>
+        ${txt("commitment1","Commitment 1","",mgr.commitment1)}
+        ${txt("deadline1","Deadline for commitment 1","",mgr.deadline1)}
+        ${txt("commitment2","Commitment 2","",mgr.commitment2)}
+        ${txt("deadline2","Deadline for commitment 2","",mgr.deadline2)}
+        ${ta("checkinNotes","30-day check-in notes (fill in later)","",mgr.checkinNotes)}
+        <div class="row-btns">
+          <button type="button" class="btn secondary" id="back">Back to dashboard</button>
+          <button type="submit" class="btn">Save Manager Review</button>
+        </div>
+      </form>
+    </div>
+  `;
+  document.getElementById("back").onclick = ()=>{ state.view="landing"; render(); };
+  document.getElementById("fmgr").onsubmit = async (e)=>{
+    e.preventDefault();
+    const fd = new FormData(e.target); const patch={}; for(const [k,v] of fd.entries()) patch[k]=v;
+    await mergeSave(`manager_review:${id}`, patch, true);
+    alert("Saved.");
+    render();
+  };
+}
+
+/* ---------------- EXPORT ---------------- */
+async function exportAllData(){
+  const out = { exportedAt: new Date().toISOString(), people:{}, supervisorFeedback:[] };
+  for(const id of Object.keys(PEOPLE)){
+    out.people[id] = {
+      name: PEOPLE[id].name,
+      role: PEOPLE[id].role,
+      self: await getJSON(`self:${id}`, true) || {},
+      manager_review: await getJSON(`manager_review:${id}`, true) || {},
+      peer_reviews_received: {}
+    };
+    for(const revId of othersOf(id)){
+      const r = await getJSON(`peer_review:${id}:${revId}`, true);
+      if(r) out.people[id].peer_reviews_received[PEOPLE[revId].name] = r;
+    }
+  }
+  const supKeys = await listPrefix("supervisor_rating:", true);
+  for(const k of supKeys){ const r = await getJSON(k, true); if(r) out.supervisorFeedback.push(r); }
+
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = `boltzmenn-midyear-appraisal-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/* ---------------- ROUTER ---------------- */
+function render(){
+  if(state.view==="landing") renderLanding();
+  else if(state.view==="self1") renderSelf1();
+  else if(state.view==="self2") renderSelf2();
+  else if(state.view==="supervisor") renderSupervisor();
+  else if(state.view==="peer") renderPeer();
+  else if(state.view==="done") renderDone();
+  else if(state.view==="admingate") renderAdminGate();
+  else if(state.view==="admin") renderAdmin();
+}
+render();
+</script>
+</body>
+</html>

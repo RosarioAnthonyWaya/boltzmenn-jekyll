@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boltzmenn — Partner Brochure 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--td:#0b8c88;--tl:#1eb085;--wh:#FFFFFF;--ash:#F5F5F5;--am:#EBEBEB;--gr:#6B6B6B;--ru:#DEDEDE;--ink:#1C1C1C;--im:#3A3A3A;--is:#5A5A5A;--tf:#e8f5f3;--tf2:#f0faf8}
+html{font-size:16px}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.7}
+@media print{.no-print{display:none!important}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+.container{max-width:720px;margin:0 auto;padding:0 44px}
+.rule{width:48px;height:3px;background:linear-gradient(90deg,#0b8c88,#1eb085);border-radius:2px;margin-bottom:28px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--td);margin-bottom:10px}
+h2{font-size:clamp(26px,4vw,38px);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px}
+h3{font-size:20px;font-weight:600;color:var(--ink);margin-bottom:12px}
+p{font-size:15px;line-height:1.8;color:var(--is);margin-bottom:16px}
+p:last-child{margin-bottom:0}
+.cover{background:linear-gradient(135deg,#0b8c88 0%,#1eb085 100%);min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:60px 0 52px;position:relative;overflow:hidden}
+.cc{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.08);pointer-events:none}
+.cc1{width:520px;height:520px;top:-160px;right:-160px}
+.cc2{width:300px;height:300px;top:-80px;right:-80px}
+.cc3{width:200px;height:200px;bottom:60px;left:-80px;background:rgba(255,255,255,.04);border:none}
+.cover-wordmark{font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.65);position:relative;z-index:1}
+.cover-divider{width:100%;height:1px;background:rgba(255,255,255,.15);margin:36px 0;position:relative;z-index:1}
+.cover-headline{font-size:clamp(52px,9vw,96px);font-weight:700;line-height:.95;letter-spacing:-.03em;color:#fff;position:relative;z-index:1;margin-bottom:24px}
+.cover-headline span{display:block;color:rgba(255,255,255,.42);font-weight:300}
+.cover-sub{font-size:16px;color:rgba(255,255,255,.7);max-width:400px;line-height:1.65;position:relative;z-index:1}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end;position:relative;z-index:1}
+.cover-meta{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.cover-web{font-size:13px;font-weight:600;color:rgba(255,255,255,.65)}
+.ls{background:#fff;padding:72px 0}
+.as{background:#F5F5F5;padding:72px 0}
+.ds{background:#0b8c88;padding:72px 0}
+.ds .section-label{color:rgba(255,255,255,.5)}
+.ds h2{color:#fff}
+.ds p{color:rgba(255,255,255,.65)}
+.ds .rule{background:rgba(255,255,255,.25)}
+.lead{font-size:18px;line-height:1.7;color:var(--im);padding-left:20px;border-left:3px solid var(--tl);margin-bottom:24px}
+.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ru);border:1px solid var(--ru);margin-top:40px}
+.cap-cell{background:#fff;padding:28px 26px}
+.cap-num{font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--td);margin-bottom:12px}
+.cap-cell h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.4}
+.cap-cell p{font-size:13.5px;color:var(--gr);margin:0;line-height:1.7}
+.prin-grid{display:grid;grid-template-columns:1fr 1fr;margin-top:36px;border-top:1px solid rgba(255,255,255,.15)}
+.prin-item{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14.5px;color:rgba(255,255,255,.78);display:flex;align-items:center;gap:12px}
+.prin-item:nth-child(odd){padding-right:28px}
+.prin-item:nth-child(even){padding-left:28px;border-left:1px solid rgba(255,255,255,.1)}
+.prin-dot{width:6px;height:6px;border-radius:50%;background:#1eb085;flex-shrink:0}
+.eco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.eco-card{background:#fff;border:1px solid var(--ru);padding:24px 20px;position:relative}
+.eco-acc{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0b8c88,#1eb085)}
+.eco-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.eco-role{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--td);margin-bottom:12px}
+.eco-card p{font-size:13px;color:var(--gr);margin:0;line-height:1.65}
+.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.aud-card{border:1px solid var(--ru);background:#fff;padding:24px 22px}
+.aud-tag{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--td);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.aud-tag::after{content:'';display:block;flex:1;height:1px;background:var(--tf)}
+.aud-card h4{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.aud-card p{font-size:13.5px;color:var(--gr);margin:0}
+.offer-list{margin-top:36px;display:flex;flex-direction:column;gap:1px;background:var(--ru);border:1px solid var(--ru)}
+.offer-row{display:grid;grid-template-columns:120px 1fr;background:#fff;padding:22px 26px;align-items:start;gap:24px}
+.offer-tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--td);background:var(--tf);padding:5px 10px;border-radius:2px;white-space:nowrap;display:inline-block;margin-top:3px}
+.offer-content h4{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.offer-content p{font-size:13.5px;color:var(--gr);margin:0;line-height:1.65}
+.vision-bar{background:linear-gradient(135deg,#0b8c88 0%,#1eb085 100%);padding:64px 0;text-align:center}
+.vision-num{font-size:clamp(72px,14vw,128px);font-weight:700;color:rgba(255,255,255,.2);line-height:1;letter-spacing:-.04em}
+.vision-stmt{font-size:clamp(20px,3.5vw,30px);font-weight:600;color:#fff;line-height:1.35;max-width:480px;margin:-12px auto 0;letter-spacing:-.01em}
+.vision-note{font-size:14px;color:rgba(255,255,255,.52);margin-top:16px}
+.partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.partner-block{border:1px solid var(--ru);padding:24px 22px;background:#fff}
+.partner-block h4{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--td);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--tf)}
+.partner-block ul{list-style:none;padding:0}
+.partner-block ul li{font-size:13.5px;color:var(--is);padding:5px 0;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--am)}
+.partner-block ul li:last-child{border-bottom:none}
+.partner-block ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:#1eb085;flex-shrink:0}
+.legal-box{margin-top:36px;border:1px solid var(--ru);border-top:3px solid var(--td);background:var(--tf2);padding:32px}
+.legal-box h3{font-size:17px;color:var(--ink);margin-bottom:10px}
+.legal-box>p{font-size:14px;color:var(--is);margin-bottom:20px}
+.legal-items{border-top:1px solid var(--ru)}
+.legal-item{display:grid;grid-template-columns:36px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--ru);align-items:start}
+.legal-item:last-child{border-bottom:none}
+.legal-num{font-size:13px;font-weight:700;color:var(--td);padding-top:2px}
+.legal-item p{font-size:14px;color:var(--is);margin:0;line-height:1.65}
+.legal-item strong{color:var(--ink)}
+.closing{background:#0b8c88;padding:80px 0}
+.closing .section-label{color:rgba(255,255,255,.48)}
+.closing h2{color:#fff}
+.closing p{color:rgba(255,255,255,.62)}
+.closing .rule{background:rgba(255,255,255,.22)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.contact-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:28px 26px}
+.contact-card-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.1)}
+.contact-card-title{font-size:14px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:16px}
+.contact-line{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.contact-line:last-child{margin-bottom:0}
+.ct{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1eb085;min-width:48px;padding-top:2px}
+.cv{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.5}
+.site-footer{background:#074e4b;padding:20px 0}
+.site-footer p{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);text-align:center;margin:0}
+.fab{position:fixed;bottom:24px;right:24px;z-index:100}
+.fab-btn{background:linear-gradient(135deg,#0b8c88,#1eb085);color:#fff;border:none;padding:13px 26px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;box-shadow:0 4px 20px rgba(11,140,136,.35);transition:opacity .2s}
+.fab-btn:hover{opacity:.88}
+.fab-btn:disabled{opacity:.6;cursor:wait}
+@media(max-width:600px){.cap-grid,.aud-grid,.partner-grid,.prin-grid,.contact-grid{grid-template-columns:1fr}.eco-grid{grid-template-columns:1fr 1fr}.offer-row{grid-template-columns:1fr;gap:8px}.prin-item:nth-child(even){padding-left:0;border-left:none}}
+</style>
+</head>
+<body id="brochure-body">
+
+<div class="cover">
+  <div class="cc cc1"></div><div class="cc cc2"></div><div class="cc cc3"></div>
+  <div class="container">
+    <div class="cover-wordmark">Boltzmenn &nbsp;·&nbsp; Partner Brochure 2026</div>
+    <div class="cover-divider"></div>
+    <div class="cover-headline">Building<br><span>African</span>Business.</div>
+    <div class="cover-sub">A growth institution for African SMEs — combining strategy, systems, customer experience, financial clarity, and capital support.</div>
+  </div>
+  <div class="container cover-bottom">
+    <div class="cover-meta">Confidential &nbsp;·&nbsp; Partner Brief &nbsp;·&nbsp; 2026</div>
+    <div class="cover-web">www.boltzmenn.com</div>
+  </div>
+</div>
+
+<div class="ls">
+  <div class="container">
+    <div class="section-label">Who We Are</div>
+    <div class="rule"></div>
+    <h2>Not an agency.<br>A growth institution in the making.</h2>
+    <p class="lead">Boltzmenn is an Africa-focused business growth and business rescue company evolving into a structured SME support ecosystem. We help founder-led businesses move from confusion, weak systems, and founder-dependency into clarity, structure, and sustainable growth.</p>
+    <p>We began with roots in branding and business communication. But we quickly recognised that surface-level visibility was not enough for the businesses we cared about. Today, Boltzmenn brings together strategy, operational systems, customer experience development, sales support, financial clarity, and capital access — under one mission.</p>
+    <p>Our work is grounded in a simple but serious truth: most African SMEs don't fail because they lack ambition. They fail because they lack structure, systems, and the right support at the right time. We exist to close that gap — commercially, practically, and at scale.</p>
+  </div>
+</div>
+
+<div class="as">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <div class="rule"></div>
+    <h2>Capabilities built for real business problems.</h2>
+    <p>Boltzmenn's work spans the full growth journey — from diagnosing what is broken to implementing systems that hold. We deliver structured support across six interconnected areas.</p>
+    <div class="cap-grid">
+      <div class="cap-cell"><div class="cap-num">01 &nbsp;/&nbsp; Growth Strategy</div><h4>Business Growth &amp; Rescue</h4><p>Diagnosing bottlenecks. Fixing broken business logic. Helping founders identify and address what is actually preventing their growth.</p></div>
+      <div class="cap-cell"><div class="cap-num">02 &nbsp;/&nbsp; Customer Experience</div><h4>CX Development &amp; Training</h4><p>Building systems that make customers feel valued and more likely to return. Training teams with practical frameworks like S.E.E. Them&#8482; and the 9-Touch Rule&#8482;.</p></div>
+      <div class="cap-cell"><div class="cap-num">03 &nbsp;/&nbsp; Revenue Systems</div><h4>Sales Support &amp; Training</h4><p>Repeatable sales processes, stronger pricing logic, and revenue models that generate income independent of the founder's constant involvement.</p></div>
+      <div class="cap-cell"><div class="cap-num">04 &nbsp;/&nbsp; Financial Clarity</div><h4>Finance Interpretation &amp; Advisory</h4><p>Helping business owners understand their numbers, identify profit leaks, and make better commercial decisions — finance as insight, not just compliance.</p></div>
+      <div class="cap-cell"><div class="cap-num">05 &nbsp;/&nbsp; Capital Access</div><h4>Funding Readiness &amp; Capital Support</h4><p>Preparing businesses for investment — improving governance, financial structure, and investor readiness through Boltzmenn Capital.</p></div>
+      <div class="cap-cell"><div class="cap-num">06 &nbsp;/&nbsp; Education</div><h4>Business Clinics, Training &amp; Toolkits</h4><p>Education-led support through workshops, business clinics, and practical toolkits that founders and their teams can apply immediately.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="ds">
+  <div class="container">
+    <div class="section-label">Our Philosophy</div>
+    <div class="rule"></div>
+    <h2>How we think about business.</h2>
+    <p style="max-width:500px">These are not slogans. They are the operating principles that shape every engagement, every recommendation, and every partnership we enter.</p>
+    <div class="prin-grid">
+      <div class="prin-item"><span class="prin-dot"></span>Systems over vibes</div>
+      <div class="prin-item"><span class="prin-dot"></span>Revenue over vanity</div>
+      <div class="prin-item"><span class="prin-dot"></span>Rescue before scale</div>
+      <div class="prin-item"><span class="prin-dot"></span>Trust before aggressive upsell</div>
+      <div class="prin-item"><span class="prin-dot"></span>Clarity over jargon</div>
+      <div class="prin-item"><span class="prin-dot"></span>Practical guidance over performative expertise</div>
+      <div class="prin-item"><span class="prin-dot"></span>Context-aware strategy over imported assumptions</div>
+      <div class="prin-item"><span class="prin-dot"></span>Institution building over improvisation</div>
+    </div>
+  </div>
+</div>
+
+<div class="ls">
+  <div class="container">
+    <div class="section-label">The Ecosystem</div>
+    <div class="rule"></div>
+    <h2>One mission. Several arms.</h2>
+    <p>Boltzmenn is the anchor brand in a growing ecosystem. Each arm addresses a distinct part of the African business growth journey. As a partner, you are engaging with the full architecture — not a single service line.</p>
+    <div class="eco-grid">
+      <div class="eco-card"><div class="eco-acc"></div><div class="eco-name">Boltzmenn</div><div class="eco-role">Core Growth Brand</div><p>Strategy, business rescue, customer experience, sales support, clinics, and founder advisory.</p></div>
+      <div class="eco-card"><div class="eco-acc"></div><div class="eco-name">Boltzmenn Capital</div><div class="eco-role">Funding Arm</div><p>Micro-funding, investor readiness, and early-stage support for African SMEs.</p></div>
+      <div class="eco-card"><div class="eco-acc"></div><div class="eco-name">Sturgeon</div><div class="eco-role">Financial Services</div><p>Finance advisory, bookkeeping support, credit guidance, and business growth finance.</p></div>
+      <div class="eco-card"><div class="eco-acc"></div><div class="eco-name">Outhbox</div><div class="eco-role">Technology Arm</div><p>Cybersecurity, digital transformation, and technology services for business.</p></div>
+      <div class="eco-card"><div class="eco-acc"></div><div class="eco-name">Redenhaus</div><div class="eco-role">Creative &amp; Brand</div><p>Brand support, creative services, and specialised business skill development.</p></div>
+      <div class="eco-card"><div class="eco-acc"></div><div class="eco-name">Startup Kopa</div><div class="eco-role">Training Platform</div><p>Future-of-work readiness for graduates and young professionals.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="as">
+  <div class="container">
+    <div class="section-label">Who We Serve</div>
+    <div class="rule"></div>
+    <h2>The founders at the centre of our work.</h2>
+    <p>Our primary focus is African SMEs — specifically those already operating, generating some revenue, and facing real structural challenges that limit their growth. We serve four main founder profiles.</p>
+    <div class="aud-grid">
+      <div class="aud-card"><div class="aud-tag">Profile 01</div><h4>The Burnt-Out Founder</h4><p>Businesses fully dependent on one person. No real delegation, no systems, no ability to scale without the founder present for everything.</p></div>
+      <div class="aud-card"><div class="aud-tag">Profile 02</div><h4>Purpose-Driven, Revenue-Blind</h4><p>Strong mission, genuine passion — but weak pricing logic, unclear revenue models, and financial decisions driven by emotion over commercial discipline.</p></div>
+      <div class="aud-card"><div class="aud-tag">Profile 03</div><h4>The Expert-Turned-Founder</h4><p>Highly skilled professionals excellent at their craft but struggling with the business side — systems, positioning, operations, and financial management.</p></div>
+      <div class="aud-card"><div class="aud-tag">Profile 04</div><h4>The Growth Seeker</h4><p>Businesses with existing traction that have plateaued. They need structure, clearer strategy, and repeatable systems to reach the next level.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="ls">
+  <div class="container">
+    <div class="section-label">Core Offers</div>
+    <div class="rule"></div>
+    <h2>How we engage with clients.</h2>
+    <p>Boltzmenn structures its work around a focused set of high-impact engagements rather than a long menu of disconnected services. This ensures quality, measurability, and real outcomes.</p>
+    <div class="offer-list">
+      <div class="offer-row"><div><span class="offer-tag">Flagship</span></div><div class="offer-content"><h4>Systemized Growth Sprint</h4><p>A structured engagement focused on diagnosing a business's specific growth bottlenecks and implementing practical, measurable fixes.</p></div></div>
+      <div class="offer-row"><div><span class="offer-tag">Retainer</span></div><div class="offer-content"><h4>Growth Stack Retainer</h4><p>Ongoing business growth and systems support. For businesses that need a consistent strategic partner over the medium term.</p></div></div>
+      <div class="offer-row"><div><span class="offer-tag">Advisory</span></div><div class="offer-content"><h4>BoltzRoom Strategy Sessions</h4><p>Structured consulting-style sessions delivering layered strategic analysis and clear recommendations for businesses at a crossroads.</p></div></div>
+      <div class="offer-row"><div><span class="offer-tag">Education</span></div><div class="offer-content"><h4>Business Clinics</h4><p>Workshop-style interventions for business owners — practical, interactive, and built around real problems rather than generic curricula.</p></div></div>
+      <div class="offer-row"><div><span class="offer-tag">Capital</span></div><div class="offer-content"><h4>Boltzmenn Capital Program</h4><p>Early-stage funding support — connecting business growth readiness with appropriate capital pathways for qualifying businesses.</p></div></div>
+      <div class="offer-row"><div><span class="offer-tag">Digital</span></div><div class="offer-content"><h4>Toolkit Store</h4><p>Practical tools, templates, and business frameworks that founders and their teams can apply independently at their own pace.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="vision-bar">
+  <div class="container">
+    <div class="vision-num">1M</div>
+    <div class="vision-stmt">African businesses empowered to succeed by 2035.</div>
+    <div class="vision-note">Through tools, insight, and financial support.</div>
+  </div>
+</div>
+
+<div class="as">
+  <div class="container">
+    <div class="section-label">Working Together</div>
+    <div class="rule"></div>
+    <h2>The kinds of partners we build with.</h2>
+    <p>Boltzmenn pursues partnerships that improve delivery capacity, expand reach, and deepen the quality of support we offer African businesses. We work across four partnership categories.</p>
+    <div class="partner-grid">
+      <div class="partner-block"><h4>Delivery Partners</h4><ul><li>Legal firms and solicitors</li><li>Auditors and accountants</li><li>HR and compliance providers</li><li>Business facilitators and coaches</li><li>Therapists and wellness practitioners</li><li>Software and automation firms</li></ul></div>
+      <div class="partner-block"><h4>Channel Partners</h4><ul><li>Business associations and chambers</li><li>Entrepreneur community organisations</li><li>Coworking spaces and hubs</li><li>Fintechs and accounting platforms</li><li>Banks serving SME clients</li><li>Accelerators and incubators</li></ul></div>
+      <div class="partner-block"><h4>Capital Partners</h4><ul><li>Angel investors</li><li>High-net-worth individuals</li><li>SME finance institutions</li><li>Diaspora and impact investors</li><li>Development finance actors</li><li>Family offices</li></ul></div>
+      <div class="partner-block"><h4>Visibility Partners</h4><ul><li>Business podcasts and media brands</li><li>Radio, TV and digital press</li><li>Founder communities</li><li>Educational organisations</li><li>Community and industry events</li><li>Wellness brands for founders</li></ul></div>
+    </div>
+    <div class="legal-box">
+      <h3>A note for legal professionals.</h3>
+      <p>Legal services sit at the heart of what African SMEs most commonly lack — and most urgently need. As a Boltzmenn delivery partner, a legal professional contributes meaningfully across several active areas of our work.</p>
+      <div class="legal-items">
+        <div class="legal-item"><div class="legal-num">01</div><p><strong>Business formation and structure</strong> — helping SME clients formalise, register, and structure their businesses correctly from the start.</p></div>
+        <div class="legal-item"><div class="legal-num">02</div><p><strong>Contract development and review</strong> — drafting supplier agreements, client contracts, employment terms, and partnership documents for our clients.</p></div>
+        <div class="legal-item"><div class="legal-num">03</div><p><strong>IP registration and protection</strong> — supporting founders with trademarks, brand registration, and intellectual property protection as their businesses formalise.</p></div>
+        <div class="legal-item"><div class="legal-num">04</div><p><strong>Funding and investment documentation</strong> — supporting businesses going through funding readiness, due diligence, and investor engagement via Boltzmenn Capital.</p></div>
+        <div class="legal-item"><div class="legal-num">05</div><p><strong>Business Clinic participation</strong> — contributing legal knowledge to our training programmes and founder education events as a subject-matter expert.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="closing">
+  <div class="container">
+    <div class="section-label">Get In Touch</div>
+    <div class="rule"></div>
+    <h2>The conversation starts here.</h2>
+    <p style="max-width:480px">If you see alignment between what you do and where Boltzmenn is going, we would like to explore what working together looks like. Reach out through any of the channels below and our team will respond promptly.</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-card-label">General Enquiries</div>
+        <div class="contact-line"><span class="ct">Email</span><span class="cv">info@boltzmenn.com</span></div>
+        <div class="contact-line"><span class="ct">Tel</span><span class="cv">+240 222 599 223</span></div>
+        <div class="contact-line"><span class="ct">Tel</span><span class="cv">+234 703 510 2247</span></div>
+        <div class="contact-line"><span class="ct">Int'l</span><span class="cv">+44 7418 350 211</span></div>
+        <div class="contact-line"><span class="ct">Web</span><span class="cv">www.boltzmenn.com</span></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-label">Clients &amp; Partnerships</div>
+        <div class="contact-card-title">Blessed Osunde</div>
+        <div class="contact-line"><span class="ct">Role</span><span class="cv">Client &amp; Partnerships Manager</span></div>
+        <div class="contact-line"><span class="ct">Email</span><span class="cv">blessed.osunde@boltzmenn.com</span></div>
+        <div class="contact-line"><span class="ct">Web</span><span class="cv">www.boltzmenn.com</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-footer">
+  <p>Boltzmenn &nbsp;·&nbsp; 2026 Partner Brochure &nbsp;·&nbsp; www.boltzmenn.com</p>
+</div>
+
+<div class="fab no-print">
+  <button class="fab-btn" id="pdf-btn">&#8595;&nbsp; Download PDF</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+document.getElementById('pdf-btn').addEventListener('click', function() {
+  var btn = this;
+  btn.textContent = 'Saving…';
+  btn.disabled = true;
+  html2pdf()
+    .from(document.getElementById('brochure-body'))
+    .set({
+      margin: 0,
+      filename: 'Boltzmenn-Partner-Brochure-2026.pdf',
+      image: { type: 'jpeg', quality: 0.92 },
+      html2canvas: { scale: 2, useCORS: true, scrollY: 0, windowWidth: 900 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: 'avoid-all' }
+    })
+    .save()
+    .then(function() {
+      btn.textContent = '↓  Download PDF';
+      btn.disabled = false;
+    });
+});
+</script>
+</body>
+</html>

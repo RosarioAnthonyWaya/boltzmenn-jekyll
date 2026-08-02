@@ -1,0 +1,38 @@
+# =====================================================================
+# Boltzmenn promotions — edit this file to change either promo unit.
+# Nothing else on the site needs to be touched.
+#
+# To turn a unit off entirely, set enabled: false -- don't delete the
+# block, just flip the switch. That way the content's still here next
+# time you want it back on.
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# STICKY BOTTOM BANNER — appears site-wide (every page, via the layout),
+# after a short delay + some scroll, dismissible, stays dismissed for
+# that visitor once closed.
+# ---------------------------------------------------------------------
+sticky_banner:
+  enabled: true
+  label: "Free Tool"
+  headline: "Where does your business actually stand?"
+  subtext: "Take the Scorecard — 2 minutes, no cost."
+  cta_text: "Take the Scorecard →"
+  cta_url: "/diagnose/"
+  delay_seconds: 8          # how long to wait before showing it
+  scroll_trigger_percent: 25 # how far down the page before it can appear (whichever condition is met last)
+
+# ---------------------------------------------------------------------
+# MID-PAGE CALLOUT — not automatic site-wide. Add {% include promo-
+# callout.html %} manually to whichever pages are long enough to
+# warrant it (currently: homepage, case studies index). Same content
+# renders wherever you place it, from this one block below.
+# ---------------------------------------------------------------------
+mid_page_callout:
+  enabled: true
+  label: "Community"
+  headline: "Come meet us in person — free, always."
+  body: "BoltzRoom is a live gathering for founder-led businesses. Real conversations, no motivational speeches."
+  cta_text: "See The Next Edition →"
+  cta_url: "/boltzroom/"
+  image: "https://i.ibb.co/fzvGnBH1/3N7D9868.jpg"

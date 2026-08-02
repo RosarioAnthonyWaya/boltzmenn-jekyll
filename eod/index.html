@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SME End-of-Day Accounting Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Brand palette ── */
+  --teal-dark:   #0b8c88;
+  --teal-mid:    #1eb085;
+  --teal-light:  #2ecfa3;
+  --teal-glow:   rgba(11,140,136,0.12);
+  --teal-border: rgba(11,140,136,0.28);
+
+  --off-white:   #f5f2ec;
+  --off-white2:  #ede9e0;
+  --ash:         #9e9c97;
+  --ash-light:   #c8c5bf;
+  --ash-dark:    #6b6962;
+  --ash-border:  rgba(158,156,151,0.22);
+
+  --bg:          #f0ede5;
+  --surface:     #f9f7f2;
+  --surface2:    #ffffff;
+  --text:        #1a1917;
+  --text2:       #4a4844;
+  --text3:       #8a8880;
+
+  --radius:    12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* subtle grain texture */
+body::after {
+  content:'';
+  position:fixed;inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:0; opacity:0.4;
+}
+
+
+
+/* ── Top bar ── */
+.topbar {
+  width:100%; max-width:660px;
+  padding:24px 24px 0;
+  display:flex; align-items:center; justify-content:space-between;
+  position:relative; z-index:2;
+}
+
+.logo {
+  font-family:'Syne',sans-serif;
+  font-weight:800; font-size:13px;
+  letter-spacing:0.02em; color:var(--teal-dark);
+  display:flex; align-items:center; gap:8px;
+}
+
+.logo-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:var(--teal-mid);
+}
+
+.step-counter {
+  font-family:'Syne',sans-serif;
+  font-size:11px; font-weight:600;
+  color:var(--ash); letter-spacing:0.08em;
+}
+
+/* ── Progress bar ── */
+.progress-wrap {
+  width:100%; max-width:660px;
+  padding:14px 24px 0;
+  position:relative; z-index:2;
+}
+
+.progress-track {
+  width:100%; height:3px;
+  background:var(--off-white2);
+  border-radius:3px; overflow:visible; position:relative;
+}
+
+.progress-fill {
+  height:100%;
+  background: linear-gradient(90deg, var(--teal-dark), var(--teal-mid));
+  border-radius:3px;
+  transition:width 0.55s cubic-bezier(0.4,0,0.2,1);
+  position:relative;
+}
+
+.progress-fill::after {
+  content:'';
+  position:absolute; right:-4px; top:-4px;
+  width:11px; height:11px; border-radius:50%;
+  background:var(--teal-mid);
+  border:2px solid var(--bg);
+  box-shadow: 0 0 0 2px rgba(30,176,133,0.3);
+}
+
+/* section pills row */
+.section-pills {
+  width:100%; max-width:660px;
+  padding:12px 24px 0;
+  display:flex; gap:6px; overflow-x:auto;
+  scrollbar-width:none; position:relative; z-index:2;
+}
+.section-pills::-webkit-scrollbar { display:none; }
+
+.sec-pill {
+  flex-shrink:0;
+  padding:4px 12px;
+  border-radius:20px;
+  font-family:'Syne',sans-serif;
+  font-size:10px; font-weight:700;
+  letter-spacing:0.02em;
+  border:1px solid var(--ash-border);
+  color:var(--ash);
+  background:transparent;
+  transition:all 0.2s;
+}
+
+.sec-pill.active {
+  background:var(--teal-dark);
+  border-color:var(--teal-dark);
+  color:#fff;
+}
+
+.sec-pill.done {
+  background:rgba(11,140,136,0.1);
+  border-color:var(--teal-border);
+  color:var(--teal-dark);
+}
+
+/* ── Survey wrap ── */
+.survey-wrap {
+  width:100%; max-width:660px;
+  padding:32px 24px 130px;
+  position:relative; z-index:2; flex:1;
+}
+
+.question-slide { display:none; }
+.question-slide.active {
+  display:block;
+  animation: fadeUp 0.32s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── Section label ── */
+.section-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:3px 10px 3px 7px;
+  border-radius:20px;
+  border:1px solid var(--teal-border);
+  background:rgba(11,140,136,0.07);
+  font-family:'Syne',sans-serif;
+  font-size:10px; font-weight:700;
+  letter-spacing:0.02em;
+  color:var(--teal-dark);
+  margin-bottom:18px;
+}
+
+.section-tag-dot {
+  width:5px; height:5px; border-radius:50%;
+  background:var(--teal-mid);
+}
+
+/* ── Q meta ── */
+.q-meta {
+  display:flex; align-items:center; gap:8px;
+  margin-bottom:10px;
+}
+
+.q-num {
+  font-family:'Syne',sans-serif;
+  font-size:11px; font-weight:700;
+  color:var(--ash); letter-spacing:0.1em;
+}
+
+.depth-badge {
+  font-size:9px; font-family:'Syne',sans-serif;
+  font-weight:700; letter-spacing:0.1em;
+  padding:2px 8px; border-radius:10px;
+  text-transform:uppercase;
+}
+.depth-deep   { background:rgba(11,140,136,0.1);  color:var(--teal-dark); border:1px solid var(--teal-border); }
+.depth-core   { background:rgba(30,176,133,0.1);  color:#1a7a5e; border:1px solid rgba(30,176,133,0.3); }
+.depth-screen { background:rgba(158,156,151,0.12); color:var(--ash-dark); border:1px solid var(--ash-border); }
+
+/* ── Question text ── */
+.q-text {
+  font-family:'Syne',sans-serif;
+  font-size:21px; font-weight:700;
+  line-height:1.35; color:var(--text);
+  margin-bottom:7px;
+}
+
+.q-hint {
+  font-size:13px; color:var(--ash);
+  line-height:1.5; margin-bottom:22px;
+  font-style:italic;
+}
+
+.q-insight {
+  background:var(--surface);
+  border:1px solid var(--ash-border);
+  border-left:3px solid var(--teal-mid);
+  border-radius:0 var(--radius) var(--radius) 0;
+  padding:9px 13px;
+  font-size:12px; color:var(--ash-dark);
+  line-height:1.55; margin-bottom:24px;
+}
+
+/* ── Choices ── */
+.choices { display:flex; flex-direction:column; gap:9px; margin-bottom:20px; }
+
+.choice-btn {
+  width:100%; text-align:left;
+  background:var(--surface2);
+  border:1px solid var(--ash-border);
+  border-radius:var(--radius);
+  padding:13px 16px;
+  color:var(--text2);
+  font-family:'DM Sans',sans-serif;
+  font-size:14px; cursor:pointer;
+  transition:all 0.16s ease;
+  display:flex; align-items:center; gap:12px;
+}
+
+.choice-btn:hover {
+  border-color:var(--teal-dark);
+  color:var(--text);
+  background:rgba(11,140,136,0.04);
+  transform:translateX(2px);
+}
+
+.choice-btn.selected {
+  background:rgba(11,140,136,0.07);
+  border-color:var(--teal-dark);
+  color:var(--text);
+}
+
+.choice-indicator {
+  width:18px; height:18px; border-radius:50%;
+  border:1.5px solid var(--ash-light);
+  flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.16s;
+}
+
+.choice-btn.selected .choice-indicator {
+  background:var(--teal-dark);
+  border-color:var(--teal-dark);
+}
+
+.choice-btn.selected .choice-indicator::after {
+  content:'';
+  width:5px; height:5px; border-radius:50%;
+  background:#fff;
+  display:block;
+}
+
+.choice-btn.multi .choice-indicator { border-radius:5px; }
+.choice-btn.multi.selected .choice-indicator::after {
+  content:'✓';
+  font-size:10px; font-weight:700;
+  color:#fff; background:none;
+  width:auto; height:auto;
+}
+
+/* ── Text area ── */
+.open-area {
+  width:100%;
+  background:var(--surface2);
+  border:1px solid var(--ash-border);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:14px; line-height:1.6;
+  resize:vertical; min-height:130px;
+  outline:none;
+  transition:border-color 0.2s;
+  margin-bottom:6px;
+}
+
+.open-area:focus { border-color:var(--teal-dark); }
+.open-area::placeholder { color:var(--ash-light); }
+
+.char-count {
+  font-size:11px; color:var(--ash-light);
+  text-align:right; margin-bottom:20px;
+}
+
+/* ── Rating ── */
+.rating-row {
+  display:flex; gap:9px; margin-bottom:6px; flex-wrap:wrap;
+}
+
+.rating-btn {
+  flex:1; min-width:50px; aspect-ratio:1;
+  background:var(--surface2);
+  border:1px solid var(--ash-border);
+  border-radius:var(--radius);
+  color:var(--ash-dark);
+  font-family:'Syne',sans-serif;
+  font-size:19px; font-weight:700;
+  cursor:pointer;
+  transition:all 0.16s ease;
+  display:flex; align-items:center; justify-content:center;
+}
+
+.rating-btn:hover {
+  border-color:var(--teal-dark);
+  color:var(--teal-dark);
+  transform:translateY(-2px);
+}
+
+.rating-btn.selected {
+  background:var(--teal-dark);
+  border-color:var(--teal-dark);
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(11,140,136,0.2);
+}
+
+.rating-labels {
+  display:flex; justify-content:space-between;
+  font-size:11px; color:var(--ash);
+  margin-bottom:22px;
+}
+
+/* ── Yes/No ── */
+.yesno-row {
+  display:grid; gap:10px; margin-bottom:20px;
+}
+
+.yesno-btn {
+  padding:16px;
+  background:var(--surface2);
+  border:1px solid var(--ash-border);
+  border-radius:var(--radius);
+  color:var(--text2);
+  font-family:'Syne',sans-serif;
+  font-size:15px; font-weight:700;
+  cursor:pointer;
+  transition:all 0.16s ease;
+  text-align:center;
+}
+
+.yesno-btn:hover {
+  border-color:var(--teal-dark);
+  color:var(--teal-dark);
+  background:rgba(11,140,136,0.04);
+}
+
+.yesno-btn.selected {
+  background:rgba(11,140,136,0.08);
+  border-color:var(--teal-dark);
+  color:var(--teal-dark);
+}
+
+/* ── Probes ── */
+.probes {
+  background:var(--off-white2);
+  border:1px solid var(--ash-border);
+  border-radius:var(--radius);
+  padding:12px 15px; margin-bottom:20px;
+}
+
+.probes-label {
+  font-size:10px; font-family:'Syne',sans-serif;
+  font-weight:700; letter-spacing:0.1em;
+  color:var(--ash); text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.probe-item {
+  font-size:13px; color:var(--text2);
+  line-height:1.5; padding:4px 0;
+  border-bottom:1px solid var(--ash-border);
+  display:flex; gap:8px;
+}
+.probe-item:last-child { border-bottom:none; }
+.probe-dash { color:var(--teal-mid); flex-shrink:0; }
+
+/* ── Other input ── */
+.other-input {
+  width:100%;
+  background:var(--off-white2);
+  border:1px solid var(--ash-border);
+  border-radius:8px;
+  padding:10px 13px;
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px; outline:none;
+  margin-top:7px; display:none;
+  transition:border-color 0.2s;
+}
+.other-input:focus { border-color:var(--teal-dark); }
+.other-input.visible { display:block; }
+
+/* ── Staff notice ── */
+.staff-notice {
+  background:rgba(11,140,136,0.06);
+  border:1px solid var(--teal-border);
+  border-radius:var(--radius);
+  padding:9px 13px;
+  font-size:12px; color:var(--teal-dark);
+  margin-bottom:18px;
+  display:flex; gap:8px; align-items:flex-start;
+}
+
+/* ── Followup label ── */
+.followup-label {
+  font-size:13px; color:var(--text2);
+  margin-bottom:8px; margin-top:4px;
+}
+
+/* ── Bottom nav ── */
+.bottom-nav {
+  position:fixed; bottom:0; left:0; right:0;
+  z-index:100;
+  display:flex; justify-content:center;
+  padding:12px 24px 28px;
+  background: linear-gradient(to top, var(--bg) 55%, transparent);
+}
+
+.nav-inner {
+  width:100%; max-width:660px;
+  display:flex; align-items:center;
+  justify-content:space-between; gap:12px;
+}
+
+.btn-back {
+  background:none;
+  border:1px solid var(--ash-border);
+  border-radius:var(--radius);
+  padding:13px 22px;
+  color:var(--ash-dark);
+  font-family:'DM Sans',sans-serif;
+  font-size:14px; cursor:pointer;
+  transition:all 0.16s;
+}
+.btn-back:hover { border-color:var(--teal-dark); color:var(--teal-dark); }
+.btn-back:disabled { opacity:0.3; cursor:not-allowed; }
+
+.btn-next {
+  flex:1;
+  background:var(--teal-dark);
+  border:none; border-radius:var(--radius);
+  padding:14px 28px;
+  color:#fff;
+  font-family:'Syne',sans-serif;
+  font-size:14px; font-weight:700;
+  letter-spacing:0.04em; cursor:pointer;
+  transition:all 0.16s;
+  display:flex; align-items:center;
+  justify-content:center; gap:8px;
+}
+.btn-next:hover {
+  background:var(--teal-mid);
+  transform:translateY(-1px);
+  box-shadow:0 5px 20px rgba(11,140,136,0.22);
+}
+.btn-next:active { transform:translateY(0); }
+
+/* saving state */
+.btn-next.saving {
+  background:var(--ash-light);
+  cursor:not-allowed;
+}
+
+/* ── Thank you ── */
+.thankyou { text-align:center; padding:48px 16px; }
+
+.thankyou-check {
+  width:68px; height:68px; border-radius:50%;
+  background:rgba(11,140,136,0.1);
+  border:2px solid var(--teal-dark);
+  display:flex; align-items:center;
+  justify-content:center;
+  margin:0 auto 22px;
+  font-size:28px; color:var(--teal-dark);
+  animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes popIn {
+  from { transform:scale(0); opacity:0; }
+  to   { transform:scale(1); opacity:1; }
+}
+
+.thankyou-title {
+  font-family:'Syne',sans-serif;
+  font-size:26px; font-weight:800;
+  color:var(--text); margin-bottom:10px;
+}
+
+.thankyou-sub {
+  font-size:14px; color:var(--ash-dark);
+  max-width:380px; margin:0 auto 28px;
+  line-height:1.6;
+}
+
+.save-status {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 20px;
+  border-radius:var(--radius);
+  font-family:'Syne',sans-serif;
+  font-size:13px; font-weight:600;
+  margin-bottom:28px;
+}
+
+.save-status.saving {
+  background:rgba(158,156,151,0.15);
+  color:var(--ash);
+  border:1px solid var(--ash-border);
+}
+
+.save-status.saved {
+  background:rgba(11,140,136,0.1);
+  color:var(--teal-dark);
+  border:1px solid var(--teal-border);
+}
+
+.save-status.error {
+  background:rgba(220,80,60,0.08);
+  color:#c04030;
+  border:1px solid rgba(220,80,60,0.2);
+}
+
+.download-row {
+  display:flex; gap:10px; justify-content:center;
+  flex-wrap:wrap; margin-top:14px;
+}
+
+.btn-dl {
+  padding:12px 22px;
+  border-radius:var(--radius);
+  font-family:'Syne',sans-serif;
+  font-size:13px; font-weight:700;
+  cursor:pointer; transition:all 0.16s;
+  display:inline-flex; align-items:center; gap:7px;
+}
+
+.btn-dl-primary {
+  background:var(--teal-dark); color:#fff; border:none;
+}
+.btn-dl-primary:hover { background:var(--teal-mid); }
+
+.btn-dl-secondary {
+  background:none;
+  border:1px solid var(--ash-border);
+  color:var(--ash-dark);
+}
+.btn-dl-secondary:hover { border-color:var(--teal-dark); color:var(--teal-dark); }
+
+
+
+.code-block {
+  background:var(--off-white2);
+  border:1px solid var(--ash-border);
+  border-radius:8px;
+  padding:11px 13px;
+  font-family:monospace;
+  font-size:11px; color:var(--text2);
+  line-height:1.5; margin-top:8px;
+  white-space:pre-wrap; word-break:break-all;
+  max-height:160px; overflow-y:auto;
+}
+
+@media (max-width:480px) {
+  .q-text { font-size:18px; }
+  .rating-btn { min-width:44px; font-size:16px; }
+  .modal { padding:22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="logo"><span class="logo-dot"></span>SME Survey</div>
+  <span class="step-counter" id="stepCounter">Question 1 of 26</span>
+</div>
+
+<!-- Progress bar -->
+<div class="progress-wrap">
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width:3%;"></div>
+  </div>
+</div>
+
+<!-- Section pills -->
+<div class="section-pills" id="sectionPills"></div>
+
+<!-- Main content -->
+<div class="survey-wrap" id="surveyWrap"></div>
+
+<!-- Bottom nav -->
+<div class="bottom-nav">
+  <div class="nav-inner">
+    <button class="btn-back" id="btnBack" onclick="goBack()">← Back</button>
+    <button class="btn-next" id="btnNext" onclick="goNext()">Continue →</button>
+  </div>
+</div>
+
+<div class="modal-sub">Every survey submission will be automatically saved to your Google Sheet. Follow these 3 steps once — then it works forever.</div>
+
+    <div class="step-list">
+      <div class="setup-step">
+        <div class="step-circle">1</div>
+        <div class="step-body">
+          <div class="step-title">Create your Google Sheet</div>
+          <div class="step-desc">Go to <a href="https://sheets.google.com" target="_blank">sheets.google.com</a> → create a new spreadsheet. Name it "SME Survey Responses". Leave it open.</div>
+        </div>
+      </div>
+
+      <div class="setup-step">
+        <div class="step-circle">2</div>
+        <div class="step-body">
+          <div class="step-title">Create an Apps Script Web App</div>
+          <div class="step-desc">In your Sheet, click <b>Extensions → Apps Script</b>. Delete any existing code and paste this script exactly:</div>
+          <div class="code-block">function doPost(e) {
+  var sheet = SpreadsheetApp
+    .getActiveSpreadsheet()
+    .getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  var row = [new Date().toISOString()];
+  var keys = Object.keys(data.answers);
+  keys.forEach(function(k) {
+    var a = data.answers[k];
+    var val = a.value || (a.values ? a.values.join('; ') : '') || (a.rating ? a.rating+'/5' : '');
+    var extra = a.followup || a.other || '';
+    row.push(val, extra);
+  });
+  sheet.appendRow(row);
+  return ContentService
+    .createTextOutput(JSON.stringify({status:'ok'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doGet() {
+  return ContentService
+    .createTextOutput(JSON.stringify({status:'ok'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}</div>
+          <div class="step-desc" style="margin-top:8px;">Click <b>Save</b>, then click <b>Deploy → New deployment</b>. Set type to <b>Web app</b>, set "Who has access" to <b>Anyone</b>. Click <b>Deploy</b> and copy the Web App URL.</div>
+        </div>
+      </div>
+
+      <div class="setup-step">
+        <div class="step-circle">3</div>
+        <div class="step-body">
+          <div class="step-title">Paste your Web App URL here</div>
+          <div class="step-desc">Paste the URL you copied from step 2 below:</div>
+          <div class="url-input-wrap">
+            <input class="url-field" id="sheetsUrlInput" type="url" placeholder="https://script.google.com/macros/s/…/exec">
+            <button class="btn-save-url" onclick="saveSheetUrl()">Save URL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-close-modal" onclick="closeSetupModal()">Close — I'll set this up later</button>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA
+// ─────────────────────────────────────────────
+const SECTIONS = {
+  A:{ name:"Business profile",       emoji:"🏪" },
+  B:{ name:"Daily closing",          emoji:"📋" },
+  C:{ name:"Pain points",            emoji:"💡" },
+  D:{ name:"Tech & trust",           emoji:"📱" },
+  E:{ name:"Value",                  emoji:"💰" },
+  F:{ name:"Vision",                 emoji:"🔭" },
+};
+
+const QUESTIONS = [
+  { id:"A1", section:"A", depth:"screen",
+    text:"What type of business do you run?",
+    hint:"Select the one that best describes your business.",
+    insight:"Segments responses by business type — patterns differ sharply across retail, food, pharmacy, etc.",
+    type:"single",
+    options:["Retail shop","Market stall","Pharmacy / chemist","Restaurant or canteen","Salon or barbershop","POS / fintech agent","Logistics / delivery","School","Other"],
+    hasOther:true },
+  { id:"A2", section:"A",
+    text:"How long have you been running this business?",
+    insight:"Longer-running businesses have more entrenched habits — important for framing adoption.",
+    type:"single",
+    options:["Less than 1 year","1–3 years","3–7 years","7 years or more"] },
+  { id:"A3", section:"A",
+    text:"On a typical day, how many sales or transactions do you make?",
+    insight:"Volume determines how painful manual closing actually is.",
+    type:"single",
+    options:["Fewer than 10","10–30","30–100","More than 100"] },
+  { id:"A4", section:"A",
+    text:"Do you run this business alone or do you have staff handling sales?",
+    insight:"Businesses with staff have a reconciliation trust problem on top of a tracking problem.",
+    type:"single",
+    options:["I run it alone","1–2 staff","3–5 staff","More than 5 staff"] },
+
+  { id:"B1", section:"B", depth:"deep",
+    text:"Walk me through exactly what you do at the end of each day to know how your business performed.",
+    hint:"Describe every step — from the moment you decide to 'close' to when you are done.",
+    insight:"Most important question. Reveals the exact ritual we are digitising.",
+    type:"open",
+    probes:["After you count the cash — then what?","Do you write anything down at that point?","Who else is involved when you do this?"] },
+  { id:"B2", section:"B",
+    text:"How long does your end-of-day process usually take from start to finish?",
+    insight:"Quantifies the time cost of the current manual process.",
+    type:"single",
+    options:["Under 15 minutes","15–30 minutes","30–60 minutes","Over 1 hour"] },
+  { id:"B3", section:"B", depth:"core",
+    text:"Where do you record what happened that day?",
+    hint:"Select all that apply.",
+    insight:"Identifies the exact tool being replaced. 'My head' is very common and the highest-risk segment.",
+    type:"multi",
+    options:["Physical notebook / ledger","Phone notes app","Spreadsheet (Excel / Sheets)","In my head only","WhatsApp messages to myself","Other"],
+    hasOther:true },
+  { id:"B4", section:"B",
+    text:"At the end of the day, what specific numbers are you trying to confirm or check?",
+    hint:"Name every number that matters — don't hold back.",
+    insight:"Tells us what 'closing' means to each business type: sales, profit, stock, cash in hand.",
+    type:"open" },
+  { id:"B5", section:"B", depth:"core",
+    text:"Do you also do a weekly or monthly summary on top of your daily check?",
+    hint:"If yes, describe how that works.",
+    insight:"Determines whether the product needs to roll up daily data into weekly and monthly views.",
+    type:"open" },
+
+  { id:"C1", section:"C", depth:"deep",
+    text:"Has there ever been a time when your money at the end of the day did not match what you expected?",
+    hint:"What happened, and how did you figure out why? Tell the full story.",
+    insight:"Best question for revealing real pain — shows how often errors happen and the financial and emotional stakes.",
+    type:"open",
+    probes:["How long did it take to find the problem?","Did you ever find the cause, or did you just move on?","How did that make you feel?"] },
+  { id:"C2", section:"C", depth:"deep",
+    text:"What is the most stressful or frustrating part of your end-of-day routine?",
+    insight:"'I don't know if the number is right' and 'my staff may be stealing' require very different solutions.",
+    type:"open" },
+  { id:"C3", section:"C",
+    text:"If you skip your end-of-day check one night, what happens the next day or week?",
+    insight:"Measures the downstream cost. High cost = high willingness to adopt and pay.",
+    type:"open" },
+  { id:"C4", section:"C", depth:"deep",
+    text:"Have you ever felt like you were busy every single day but still did not really know whether you were making a profit?",
+    insight:"'Busy but broke' is the most common experience. A yes here confirms the core gap.",
+    type:"yesno",
+    followupLabel:"Tell us more about that feeling:" },
+  { id:"C5", section:"C", depth:"deep",
+    text:"If you have staff — do you fully trust that the sales figures they give you at end of day are accurate?",
+    hint:"Only answer if you have staff. If you work alone, tap Continue to skip.",
+    insight:"Staff trust is a separate urgent pain point that could become a standalone feature.",
+    type:"open", staffOnly:true },
+
+  { id:"D1", section:"D", depth:"core",
+    text:"Have you ever tried using an app or software to manage your business accounts?",
+    hint:"If yes — what happened, and why did you stop?",
+    insight:"The reason they stopped is more valuable than the fact they tried.",
+    type:"open",
+    probes:["What specifically made you go back to your notebook?","Was there a moment that made you lose trust in the app?"] },
+  { id:"D2", section:"D",
+    text:"If you put your daily business numbers into an app, what is your biggest worry?",
+    hint:"There are no wrong answers here.",
+    insight:"Surfaces specific trust barriers: data theft, tax authority, hackers, the company shutting down.",
+    type:"open" },
+  { id:"D3", section:"D", depth:"deep",
+    text:"If the app stopped working for two days because of poor internet — what would you do?",
+    insight:"'Go back to the notebook' means the app must work offline — a non-negotiable product requirement.",
+    type:"single",
+    options:["Go back to my notebook immediately","Wait for the app to come back","Use a different method temporarily","I would be seriously stuck"] },
+  { id:"D4", section:"D",
+    text:"Do you currently use your phone for anything related to your business finances?",
+    hint:"E.g. transfers, POS, Opay, Palmpay, bank apps.",
+    insight:"Existing mobile money habits make adding a closing tool a smaller behavioural leap.",
+    type:"multi",
+    options:["Bank app transfers","Opay / Palmpay / Moniepoint","POS machine","WhatsApp for business records","Nothing digital yet"] },
+  { id:"D5", section:"D",
+    text:"Would you be more comfortable if the app worked in Yoruba, Igbo, or Hausa instead of only English?",
+    insight:"Validates localisation strategy. Also observe which language the respondent is most comfortable speaking.",
+    type:"single",
+    options:["Yes, definitely","No, English is fine","It does not matter to me"] },
+
+  { id:"E1", section:"E", depth:"core",
+    text:"If an app gave you a clear daily summary — total sales, cash received, what you're owed, numbers matching — in under 5 minutes, how valuable would that be?",
+    hint:"1 = not useful at all,  5 = extremely valuable",
+    insight:"A 5-rating with a weak reason differs from a 5 with 'I lose money every week because of this.'",
+    type:"rating",
+    followupLabel:"Why did you give that rating?" },
+  { id:"E2", section:"E", depth:"deep",
+    text:"If this app cost ₦1,000 per month — less than one notebook — would you pay for it?",
+    insight:"The 'less than a notebook' anchor is deliberate. The real data is in the reason for the answer.",
+    type:"yesno", extraOption:"Maybe",
+    followupLabel:"Why or why not? (If No — would ₦500/month change your mind?)" },
+  { id:"E3", section:"E",
+    text:"What would make you trust an app with your business numbers enough to use it every single day?",
+    hint:"List anything — features, guarantees, reputation, a friend recommending it.",
+    insight:"Reveals exact trust signals needed for onboarding and marketing.",
+    type:"open" },
+  { id:"E4", section:"E", depth:"deep",
+    text:"If the app could generate a simple monthly report you could show a bank or investor to get a loan — would that change how much you value it?",
+    insight:"Tests whether financial inclusion unlocks premium value. Many SMEs have been denied loans due to lack of records.",
+    type:"yesno",
+    followupLabel:"Tell us more about your experience with loans or financial records:" },
+
+  { id:"F1", section:"F", depth:"deep",
+    text:"If you could design the perfect end-of-day tool yourself — what would it do? What would it look like?",
+    hint:"Dream big. No idea is too small or too ambitious.",
+    insight:"This is your product roadmap from the customer's mouth. Every word matters.",
+    type:"open" },
+  { id:"F2", section:"F",
+    text:"What is the ONE thing this tool must do really well to make you tell other business owners about it?",
+    hint:"Just one thing — if you had to choose.",
+    insight:"Your word-of-mouth hook. Whatever they say goes on the app's first screen.",
+    type:"open" },
+  { id:"F3", section:"F",
+    text:"Is there anything about your end-of-day process that we haven't asked about, that you think is important?",
+    hint:"This is your chance to say anything at all.",
+    insight:"The most important things are often said last. People save personal details for when they trust you.",
+    type:"open" },
+];
+
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+let current = 0;
+let answers = {};
+let SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzQLS_ltOUbhwKlbqjmk_FcJvQHlM5MfHHKwXl7hHViBG-tG6m7nnrGMjp_kXwAgK0x/exec';
+
+// ─────────────────────────────────────────────
+// SECTION PILLS
+// ─────────────────────────────────────────────
+function renderPills() {
+  const wrap = document.getElementById('sectionPills');
+  const currentSec = QUESTIONS[current] ? QUESTIONS[current].section : null;
+  const passedSecs = new Set(QUESTIONS.slice(0, current).map(q => q.section));
+  wrap.innerHTML = Object.entries(SECTIONS).map(([key, sec]) => {
+    let cls = 'sec-pill';
+    if (key === currentSec) cls += ' active';
+    else if (passedSecs.has(key) && key !== currentSec) cls += ' done';
+    return `<div class="${cls}">${key}. ${sec.name}</div>`;
+  }).join('');
+}
+
+// ─────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────
+function render() {
+  const q = QUESTIONS[current];
+  const pct = Math.max(3, Math.round(((current + 1) / (QUESTIONS.length + 1)) * 100));
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('stepCounter').textContent = `Question ${current + 1} of ${QUESTIONS.length}`;
+  document.getElementById('btnBack').disabled = current === 0;
+  document.getElementById('btnNext').textContent = current === QUESTIONS.length - 1 ? 'Submit survey →' : 'Continue →';
+  renderPills();
+
+  const saved = answers[q.id] || {};
+  let html = `<div class="question-slide active">`;
+
+  // Section tag
+  html += `<div class="section-tag"><span class="section-tag-dot"></span>${q.section} — ${SECTIONS[q.section].name}</div>`;
+
+  // Q meta
+  html += `<div class="q-meta"><span class="q-num">${q.id}</span>${depthLabel(q.depth||'')}
+  </div>`;
+
+  // Question + hint
+  html += `<div class="q-text">${q.text}</div>`;
+  if (q.hint) html += `<div class="q-hint">${q.hint}</div>`;
+  if (q.staffOnly) html += `<div class="staff-notice"><span>ℹ</span><span>Only answer if you have staff. If you work alone, tap Continue to skip.</span></div>`;
+
+  // Insight
+  html += `<div class="q-insight"><b>Insight:</b> ${q.insight}</div>`;
+
+  // ── Input types ──
+  if (q.type === 'single') {
+    html += `<div class="choices">`;
+    q.options.forEach(opt => {
+      const sel = saved.value === opt ? ' selected' : '';
+      html += `<button class="choice-btn${sel}" onclick="selectSingle(this,'${q.id}','${esc(opt)}')">
+        <span class="choice-indicator"></span>
+        <span class="choice-label">${opt}</span>
+      </button>`;
+    });
+    if (q.hasOther) {
+      html += `<input type="text" class="other-input${saved.value==='Other'?' visible':''}" id="oi_${q.id}" placeholder="Please specify…" value="${saved.other||''}" oninput="updateOther('${q.id}',this.value)">`;
+    }
+    html += `</div>`;
+  }
+
+  if (q.type === 'multi') {
+    const selArr = saved.values || [];
+    html += `<div class="choices">`;
+    q.options.forEach(opt => {
+      const sel = selArr.includes(opt) ? ' selected' : '';
+      html += `<button class="choice-btn multi${sel}" onclick="selectMulti(this,'${q.id}','${esc(opt)}')">
+        <span class="choice-indicator"></span>
+        <span class="choice-label">${opt}</span>
+      </button>`;
+    });
+    if (q.hasOther) {
+      html += `<input type="text" class="other-input${selArr.includes('Other')?' visible':''}" id="oi_${q.id}" placeholder="Please specify…" value="${saved.other||''}" oninput="updateOther('${q.id}',this.value)">`;
+    }
+    html += `</div>`;
+  }
+
+  if (q.type === 'open') {
+    const val = saved.value || '';
+    html += `<textarea class="open-area" id="oa_${q.id}" placeholder="Write your answer here…" oninput="updateOpen('${q.id}',this.value);ccount(this,'cc_${q.id}')">${val}</textarea>`;
+    html += `<div class="char-count" id="cc_${q.id}">${val.length} characters</div>`;
+  }
+
+  if (q.type === 'rating') {
+    const sel = saved.rating || null;
+    html += `<div class="rating-row">`;
+    for (let i=1;i<=5;i++) {
+      html += `<button class="rating-btn${sel===i?' selected':''}" onclick="selectRating('${q.id}',${i},this)">${i}</button>`;
+    }
+    html += `</div><div class="rating-labels"><span>Not useful</span><span>Extremely valuable</span></div>`;
+    html += `<div class="followup-label">${q.followupLabel}</div>`;
+    html += `<textarea class="open-area" id="rf_${q.id}" placeholder="Explain your rating…" style="min-height:90px;" oninput="updateRatingFU('${q.id}',this.value)">${saved.followup||''}</textarea>`;
+  }
+
+  if (q.type === 'yesno') {
+    const opts = q.extraOption ? ['Yes','No',q.extraOption] : ['Yes','No'];
+    html += `<div class="yesno-row" style="grid-template-columns:repeat(${opts.length},1fr)">`;
+    opts.forEach(opt => {
+      html += `<button class="yesno-btn${saved.value===opt?' selected':''}" onclick="selectYN('${q.id}','${opt}',this)">${opt}</button>`;
+    });
+    html += `</div>`;
+    if (q.followupLabel) {
+      html += `<div class="followup-label">${q.followupLabel}</div>`;
+      html += `<textarea class="open-area" id="yf_${q.id}" placeholder="Your thoughts…" style="min-height:90px;" oninput="updateYNFU('${q.id}',this.value)">${saved.followup||''}</textarea>`;
+    }
+  }
+
+  // Probes
+  if (q.probes && q.probes.length) {
+    html += `<div class="probes"><div class="probes-label">Interviewer — if they pause, ask:</div>`;
+    q.probes.forEach(p => html += `<div class="probe-item"><span class="probe-dash">—</span><span>${p}</span></div>`);
+    html += `</div>`;
+  }
+
+  html += `</div>`;
+  document.getElementById('surveyWrap').innerHTML = html;
+}
+
+function depthLabel(d) {
+  if (d==='deep')   return '<span class="depth-badge depth-deep">Deep</span>';
+  if (d==='core')   return '<span class="depth-badge depth-core">Core</span>';
+  if (d==='screen') return '<span class="depth-badge depth-screen">Screen</span>';
+  return '';
+}
+function esc(s) { return s.replace(/'/g,"\\'"); }
+function ccount(el,id) {
+  const cc=document.getElementById(id);
+  if(cc) cc.textContent=el.value.length+' characters';
+}
+
+// ─────────────────────────────────────────────
+// INPUT HANDLERS
+// ─────────────────────────────────────────────
+function selectSingle(el, qid, val) {
+  document.querySelectorAll('.choice-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qid]=answers[qid]||{};
+  answers[qid].value=val;
+  const oi=document.getElementById('oi_'+qid);
+  if(oi) oi.classList.toggle('visible', val==='Other');
+  const q=QUESTIONS[current];
+  if(!q.hasOther && val!=='Other') setTimeout(()=>goNext(), 380);
+}
+
+function selectMulti(el, qid, val) {
+  el.classList.toggle('selected');
+  answers[qid]=answers[qid]||{values:[]};
+  const arr=answers[qid].values;
+  const i=arr.indexOf(val);
+  if(i>-1) arr.splice(i,1); else arr.push(val);
+  const oi=document.getElementById('oi_'+qid);
+  if(oi) oi.classList.toggle('visible', arr.includes('Other'));
+}
+
+function selectRating(qid, val, el) {
+  document.querySelectorAll('.rating-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qid]=answers[qid]||{};
+  answers[qid].rating=val;
+}
+
+function selectYN(qid, val, el) {
+  document.querySelectorAll('.yesno-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[qid]=answers[qid]||{};
+  answers[qid].value=val;
+}
+
+function updateOpen(qid,v)    { answers[qid]=answers[qid]||{}; answers[qid].value=v; }
+function updateOther(qid,v)   { answers[qid]=answers[qid]||{}; answers[qid].other=v; }
+function updateRatingFU(qid,v){ answers[qid]=answers[qid]||{}; answers[qid].followup=v; }
+function updateYNFU(qid,v)    { answers[qid]=answers[qid]||{}; answers[qid].followup=v; }
+
+// ─────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────
+function goNext() {
+  if(current < QUESTIONS.length-1) {
+    current++;
+    render();
+    window.scrollTo({top:0,behavior:'smooth'});
+  } else {
+    submitSurvey();
+  }
+}
+
+function goBack() {
+  if(current>0) {
+    current--;
+    render();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+
+// ─────────────────────────────────────────────
+// SUBMIT + GOOGLE SHEETS
+// ─────────────────────────────────────────────
+async function submitSurvey() {
+  document.getElementById('progressFill').style.width='100%';
+  document.getElementById('stepCounter').textContent='Complete';
+  document.getElementById('btnBack').style.display='none';
+  document.getElementById('btnNext').style.display='none';
+
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    surveyVersion: '1.0',
+    answers
+  };
+
+  const wrap = document.getElementById('surveyWrap');
+  wrap.innerHTML = buildThankYou('saving');
+
+  if(SHEETS_URL) {
+    try {
+      await fetch(SHEETS_URL, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      wrap.innerHTML = buildThankYou('saved');
+    } catch(err) {
+      wrap.innerHTML = buildThankYou('error');
+    }
+  } else {
+    wrap.innerHTML = buildThankYou('saving');
+  }
+
+  // always make download available
+  window._surveyPayload = payload;
+}
+
+function buildThankYou(state) {
+  let statusHtml = '';
+  if(state==='saving') {
+    statusHtml = `<div class="save-status saving">⏳ Saving to Google Sheets…</div>`;
+  } else if(state==='saved') {
+    statusHtml = `<div class="save-status saved">✓ Saved to Google Sheets successfully</div>`;
+  } else if(state==='error') {
+    statusHtml = `<div class="save-status error">⚠ Could not reach Google Sheets — please download below</div>`;
+  } else {
+    statusHtml = `<div class="save-status error" style="background:rgba(11,140,136,0.06);color:var(--teal-dark);border-color:var(--teal-border);">
+      Saving to Google Sheets...
+    </div>`;
+  }
+
+  return `<div class="thankyou">
+    <div class="thankyou-check">✓</div>
+    <div class="thankyou-title">Thank you.</div>
+    <div class="thankyou-sub">Your answers will help shape a tool that fits the way Nigerian businesses actually work.</div>
+    ${statusHtml}
+    <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--ash);text-transform:uppercase;margin-bottom:14px;">Also download your responses</div>
+    <div class="download-row">
+      <button class="btn-dl btn-dl-primary" onclick="downloadCSV()">↓ Download CSV</button>
+      <button class="btn-dl btn-dl-secondary" onclick="downloadJSON()">↓ Download JSON</button>
+    </div>
+  </div>`;
+}
+
+// ─────────────────────────────────────────────
+// EXPORT
+// ─────────────────────────────────────────────
+function downloadJSON() {
+  const p = window._surveyPayload || { submittedAt:new Date().toISOString(), answers };
+  const b = new Blob([JSON.stringify(p,null,2)],{type:'application/json'});
+  dl(b,`sme_survey_${Date.now()}.json`);
+}
+
+function downloadCSV() {
+  const p = window._surveyPayload || { answers };
+  const rows = [['Question ID','Question','Answer','Extra / Followup']];
+  QUESTIONS.forEach(q => {
+    const a = p.answers[q.id]||{};
+    let ans='', extra='';
+    if(q.type==='single') { ans=a.value||''; extra=a.other||''; }
+    if(q.type==='multi')  { ans=(a.values||[]).join('; '); extra=a.other||''; }
+    if(q.type==='open')   { ans=a.value||''; }
+    if(q.type==='rating') { ans=a.rating?`${a.rating}/5`:''; extra=a.followup||''; }
+    if(q.type==='yesno')  { ans=a.value||''; extra=a.followup||''; }
+    rows.push([q.id,`"${q.text.replace(/"/g,'""')}"`,`"${ans.replace(/"/g,'""')}"`,`"${extra.replace(/"/g,'""')}"`]);
+  });
+  const csv=rows.map(r=>r.join(',')).join('\n');
+  dl(new Blob([csv],{type:'text/csv'}),`sme_survey_${Date.now()}.csv`);
+}
+
+function dl(blob, name) {
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+
+
+
+
+
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>

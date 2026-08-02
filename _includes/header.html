@@ -1,0 +1,93 @@
+<!-- =====================================================================
+     Boltzmenn header / navbar — Jekyll include.
+     Shared across every page, so all links point to real pages, not
+     homepage anchors (a page like /about/ has no #process section to
+     scroll to).
+
+     Structure: left-nav = logo only. nav-menu = desktop links +
+     mobile panel. right-nav = language slot, CTA, hamburger.
+
+     The hamburger is a fully custom button (.bm-hamburger-btn), not
+     built on Webflow's .menu-button/.w-nav-button classes -- those
+     depend on Webflow's own runtime JS to establish their initial
+     state, which doesn't exist outside their platform, and caused
+     two separate "button does nothing" bugs during development.
+===================================================================== -->
+<div class="master-navigation">
+  <div role="banner" class="navbar w-nav bm-navbar-solid">
+    <div class="nav-container">
+      <div class="left-nav">
+        <a href="{{ '/' | relative_url }}" class="brand-navbar w-nav-brand" aria-label="Boltzmenn home" style="width:45px;">
+          <div class="logo-nav w-embed"><img src="{{ site.logo | relative_url }}" alt="Boltzmenn logo" style="height:22px;width:auto;"></div>
+        </a>
+      </div>
+
+      <nav role="navigation" class="nav-menu w-nav-menu">
+        <div class="wrap-nav-links">
+          <div class="dropdown w-dropdown">
+            <div class="dropdown-toggle w-dropdown-toggle" aria-haspopup="menu" aria-expanded="false" role="button" tabindex="0">
+              <div class="nav-link"><div>Services ▾</div></div>
+            </div>
+            <div class="dropdown-list">
+              <a href="{{ '/the-scan/' | relative_url }}" class="nav-column-item"><div>The Scan</div><div class="text-small">The diagnostic — starts here</div></a>
+              <a href="{{ '/lift/' | relative_url }}" class="nav-column-item"><div>LIFT</div><div class="text-small">Stabilise a business under pressure</div></a>
+              <a href="{{ '/scale/' | relative_url }}" class="nav-column-item"><div>Scale</div><div class="text-small">Structure for growth</div></a>
+              <a href="{{ '/financial-clarity/' | relative_url }}" class="nav-column-item"><div>Financial Clarity</div><div class="text-small">Know what your numbers say</div></a>
+              <a href="{{ '/circle/' | relative_url }}" class="nav-column-item"><div>Circle</div><div class="text-small">Boltzmenn in the room, long-term</div></a>
+            </div>
+          </div>
+          <a href="{{ '/what-we-fix/' | relative_url }}" class="nav-link w-inline-block{% if page.url contains '/what-we-fix' %} w--current{% endif %}"><div>What We Fix</div></a>
+          <a href="{{ '/case-studies/' | relative_url }}" class="nav-link w-inline-block{% if page.url contains '/case-studies' %} w--current{% endif %}"><div>Results</div></a>
+          <a href="{{ '/frameworks/' | relative_url }}" class="nav-link w-inline-block{% if page.url contains '/frameworks' %} w--current{% endif %}"><div>Frameworks</div></a>
+          <a href="{{ '/boltzroom/' | relative_url }}" class="nav-link w-inline-block{% if page.url contains '/boltzroom' %} w--current{% endif %}"><div>BoltzRoom</div></a>
+        </div>
+
+        <div class="mobile-menu" id="bmMobileMenu">
+          <div class="wrap-mobile-menu">
+            <div class="mobile-nav-top-tile">
+              <a href="{{ '/diagnose/' | relative_url }}" class="nav-column-item-mobile w-inline-block"><div class="mobile-links-wrap"><div class="text-large">Start With The Scan</div></div></a>
+              <div class="divider-dark-16"></div>
+              <a href="{{ '/what-we-fix/' | relative_url }}" class="nav-column-item-mobile w-inline-block"><div class="mobile-links-wrap"><div class="text-large">What We Fix</div></div></a>
+              <div class="divider-dark-16"></div>
+              <div class="nav-column-item-mobile">
+                <div class="mobile-links-wrap"><div class="text-large">Services</div></div>
+                <a href="{{ '/the-scan/' | relative_url }}" class="text-small body-medium">The Scan</a>
+                <a href="{{ '/lift/' | relative_url }}" class="text-small body-medium">LIFT</a>
+                <a href="{{ '/scale/' | relative_url }}" class="text-small body-medium">Scale</a>
+                <a href="{{ '/financial-clarity/' | relative_url }}" class="text-small body-medium">Financial Clarity</a>
+                <a href="{{ '/circle/' | relative_url }}" class="text-small body-medium">Circle</a>
+              </div>
+              <div class="divider-dark-16"></div>
+              <a href="{{ '/case-studies/' | relative_url }}" class="nav-column-item-mobile w-inline-block"><div class="mobile-links-wrap"><div class="text-large">Results</div></div></a>
+              <div class="divider-dark-16"></div>
+              <a href="{{ '/frameworks/' | relative_url }}" class="nav-column-item-mobile w-inline-block"><div class="mobile-links-wrap"><div class="text-large">Frameworks</div></div></a>
+              <div class="divider-dark-16"></div>
+              <a href="{{ '/boltzroom/' | relative_url }}" class="nav-column-item-mobile w-inline-block"><div class="mobile-links-wrap"><div class="text-large">BoltzRoom</div></div></a>
+              <div class="divider-dark-16"></div>
+              <a href="{{ '/about/' | relative_url }}" class="nav-column-item-mobile w-inline-block"><div class="mobile-links-wrap"><div class="text-large">About</div></div></a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="right-nav">
+        <!-- Reserved language slot -- icon-only, ready to wire up to
+             real language switching later without touching nav layout. -->
+        <div class="bm-lang">
+          <button class="bm-lang-btn" aria-label="Language" aria-haspopup="true">EN</button>
+          <div class="bm-lang-panel">
+            <div>English (default)</div>
+            <div style="opacity:.4;">More coming soon</div>
+          </div>
+        </div>
+        <a href="{{ '/diagnose/' | relative_url }}" class="cta-small w-inline-block bm-cta-solid">
+          <div class="button-text-mask button-2"><div class="button-text">Start With The Scan →</div></div>
+          <div class="button-bg"></div>
+        </a>
+        <button class="bm-hamburger-btn" id="bmMenuButton" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<!-- =====================================================================
+     Sticky bottom banner — content lives in _data/promotions.yml.
+     To change the copy, link, or turn it off, edit that file only.
+     This include never needs touching for a content change.
+===================================================================== -->
+{% assign promo = site.data.promotions.sticky_banner %}
+{% if promo.enabled %}
+<div id="bmStickyBanner" class="bm-sticky-banner"
+     data-delay="{{ promo.delay_seconds | default: 8 }}"
+     data-scroll="{{ promo.scroll_trigger_percent | default: 25 }}">
+  <div class="bm-sticky-banner-inner">
+    <div class="bm-sticky-banner-text">
+      <span class="bm-sticky-banner-label">{{ promo.label }}</span>
+      <span class="bm-sticky-banner-headline">{{ promo.headline }}</span>
+      <span class="bm-sticky-banner-sub">{{ promo.subtext }}</span>
+    </div>
+    <a href="{{ promo.cta_url | relative_url }}" class="bm-sticky-banner-cta">{{ promo.cta_text }}</a>
+    <button id="bmStickyBannerClose" class="bm-sticky-banner-close" aria-label="Dismiss">×</button>
+  </div>
+</div>
+{% endif %}

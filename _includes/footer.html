@@ -1,0 +1,66 @@
+<!-- =====================================================================
+     Boltzmenn footer — Jekyll include.
+     Company/Legal columns now include the pages from the sitemap that
+     weren't in the original homepage-only footer (About, Legal, Book
+     a Call, Pricing) so nothing built stays undiscoverable.
+     Deliberately NOT including a public Capital link -- locked rule:
+     Capital is never marketed publicly, Circle clients only.
+===================================================================== -->
+<section class="footer">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="content-footer">
+      <div class="w-layout-grid footer-halves">
+        <div class="footer-left">
+          <div class="footer-top-tile">
+            <div class="heading-footer"><img src="{{ site.logo_white }}" alt="{{ site.title }}" style="height:28px;width:auto;"></div>
+            <div class="text-large">Helping founder-led businesses across Africa build stronger systems and operate better.</div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-column">
+            <div class="label-small label-medium">Services</div>
+            <div class="footer-links-column">
+              <a href="{{ '/the-scan/' | relative_url }}" class="footer-link">The Scan</a>
+              <a href="{{ '/lift/' | relative_url }}" class="footer-link">LIFT</a>
+              <a href="{{ '/scale/' | relative_url }}" class="footer-link">Scale</a>
+              <a href="{{ '/financial-clarity/' | relative_url }}" class="footer-link">Financial Clarity</a>
+              <a href="{{ '/circle/' | relative_url }}" class="footer-link">Circle</a>
+              <a href="{{ '/pricing/' | relative_url }}" class="footer-link">Pricing</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <div class="label-small label-medium">Company</div>
+            <div class="footer-links-column">
+              <a href="{{ '/about/' | relative_url }}" class="footer-link">About</a>
+              <a href="{{ '/case-studies/' | relative_url }}" class="footer-link">Results</a>
+              <a href="{{ '/frameworks/' | relative_url }}" class="footer-link">Frameworks</a>
+              <a href="{{ '/boltzroom/' | relative_url }}" class="footer-link">BoltzRoom</a>
+              <a href="{{ '/book-a-call/' | relative_url }}" class="footer-link">Book a Call</a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <div class="label-small label-medium">Contact &amp; Legal</div>
+            <div class="footer-links-column">
+              <a href="mailto:{{ site.contact.email }}" class="footer-link">{{ site.contact.email }}</a>
+              <a href="mailto:{{ site.contact.partnerships_email }}" class="footer-link">Clients &amp; Partnerships</a>
+              <a href="{{ '/legal/' | relative_url }}" class="footer-link">Legal &amp; Policies</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-wrap">
+        <div class="footer-legal-tile">
+          <div class="footer-social-wrap">
+            {% if site.social.linkedin %}<a href="{{ site.social.linkedin }}" target="_blank" rel="noopener" class="social-link w-inline-block" aria-label="LinkedIn">in</a>{% endif %}
+            {% if site.social.instagram %}<a href="{{ site.social.instagram }}" target="_blank" rel="noopener" class="social-link w-inline-block" aria-label="Instagram">ig</a>{% endif %}
+            {% if site.social.whatsapp %}<a href="{{ site.social.whatsapp }}" target="_blank" rel="noopener" class="social-link w-inline-block" aria-label="WhatsApp">wa</a>{% endif %}
+          </div>
+          <div class="label-small label-medium">© {{ site.time | date: '%Y' }} {{ site.title }}. {{ site.contact.city }}, {{ site.contact.country }}. All rights reserved.</div>
+        </div>
+        <div class="footer-last-block">
+          <div class="text-small body-subtle">{{ site.title }} provides business advisory, operational support, and strategic guidance to small and medium-sized enterprises. We do not provide legal advice, investment advice, or regulated financial services. Any financial projections, funding guidance, or business outcomes discussed are estimates based on available information and do not guarantee results. Clients are advised to seek independent professional advice where required. Engagements are governed by written agreements and Nigerian law.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

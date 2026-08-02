@@ -1,0 +1,35 @@
+<!-- =====================================================================
+     Mid-page promo callout — content lives in _data/promotions.yml.
+     Reuses the real callout-section/block-callout component already
+     live on the homepage (the "After The Scan" handoff) rather than
+     inventing a new visual pattern for a second promotional unit.
+
+     Not automatic site-wide -- add {% raw %}{% include promo-callout.html %}{% endraw %}
+     manually to whichever pages are long enough to warrant it.
+===================================================================== -->
+{% assign promo = site.data.promotions.mid_page_callout %}
+{% if promo.enabled %}
+<section class="section callout-section">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="block-callout">
+      <div class="content-callout">
+        <div class="headline-callout">
+          <div class="label-master"><div class="label-small">{{ promo.label }}</div></div>
+          <h2 class="no-margins">{{ promo.headline }}</h2>
+        </div>
+        <div class="callout-bottom-tile">
+          <div>{{ promo.body }}</div>
+          <a href="{{ promo.cta_url | relative_url }}" class="cta-main w-inline-block">
+            <div class="button-text-mask"><div class="button-text">{{ promo.cta_text }}</div></div>
+            <div class="button-bg"></div>
+          </a>
+        </div>
+      </div>
+      <div class="image-wrap-callout">
+        <img src="{{ promo.image }}" loading="lazy" alt="" class="image-cover">
+      </div>
+    </div>
+  </div>
+  <div class="overlay-callout"></div>
+</section>
+{% endif %}

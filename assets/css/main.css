@@ -25,6 +25,26 @@
    Matching the same explicit pattern removes that ambiguity. */
 .marquee-services{width:max-content;will-change:transform;}
 
+/* Native replacement for Webflow's slider runtime on the homepage.
+   The template CSS still owns card widths and the partially visible
+   next-card composition; JS only changes the horizontal position. */
+.foundations-section .w-slide{
+  transition:transform .5s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+.foundations-section .w-slider-mask{
+  touch-action:pan-y;
+}
+.foundations-section .w-slider-arrow-left:focus-visible,
+.foundations-section .w-slider-arrow-right:focus-visible{
+  outline:2px solid var(--bm-teal);
+  outline-offset:4px;
+  border-radius:50%;
+}
+@media(prefers-reduced-motion:reduce){
+  .foundations-section .w-slide{transition:none;}
+}
+
 /* Section shells reused across What We Fix, What's Next, Frameworks,
    and any future page built the same way. */
 .bm-section-in{max-width:1140px;margin:0 auto;padding:0 40px;}

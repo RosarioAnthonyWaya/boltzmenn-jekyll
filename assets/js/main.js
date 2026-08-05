@@ -1,7 +1,8 @@
 // =====================================================================
 // Boltzmenn main.js — Jekyll asset.
 // Nav-specific toggle logic lives in navbar.js instead; this file is
-// everything else interactive on the page (marquee, FAQ, smooth scroll).
+// everything else interactive on the page (marquee, sliders, FAQ,
+// smooth scroll).
 //
 // Order matters here: marquee and FAQ run FIRST, each in their own
 // isolated IIFE, before Lenis initializes. Previously Lenis sat at the
@@ -47,6 +48,130 @@
     }
     requestAnimationFrame(step);
   }
+})();
+
+// Homepage founder-state slider. The HTML keeps Webflow's structural
+// classes for styling, but this project does not load Webflow's runtime,
+// so the carousel behaviour is implemented here. Each slide is moved by
+// the measured distance between its natural layout position and the
+// first slide; this preserves the template's intentionally visible next
+// card on both desktop and mobile instead of forcing a generic 100%-wide
+// carousel layout.
+(function(){
+  try{
+    document.querySelectorAll('.foundations-section .w-slider').forEach(function(slider){
+      var mask = slider.querySelector('.w-slider-mask');
+      var slides = Array.from(slider.querySelectorAll('.w-slide'));
+      var previous = slider.querySelector('.w-slider-arrow-left');
+      var next = slider.querySelector('.w-slider-arrow-right');
+      var dots = Array.from(slider.querySelectorAll('.w-slider-dot'));
+      var current = 0;
+      var touchStartX = 0;
+      var touchStartY = 0;
+      var dragging = false;
+
+      if(!mask || slides.length < 2) return;
+
+      slider.setAttribute('aria-roledescription', 'carousel');
+      mask.setAttribute('aria-live', 'polite');
+
+      function slideOffset(index){
+        return slides[index].offsetLeft - slides[0].offsetLeft;
+      }
+
+      function render(announce){
+        var offset = slideOffset(current);
+        slides.forEach(function(slide, index){
+          var active = index === current;
+          slide.style.transform = 'translate3d(' + (-offset) + 'px,0,0)';
+          slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+          slide.setAttribute('tabindex', active ? '0' : '-1');
+          if(active) slide.removeAttribute('inert');
+          else slide.setAttribute('inert', '');
+        });
+        dots.forEach(function(dot, index){
+          var active = index === current;
+          dot.classList.toggle('w-active', active);
+          dot.setAttribute('aria-current', active ? 'true' : 'false');
+          dot.setAttribute('tabindex', active ? '0' : '-1');
+        });
+        slider.dataset.activeSlide = String(current + 1);
+        if(announce) mask.setAttribute('aria-label', 'Slide ' + (current + 1) + ' of ' + slides.length);
+      }
+
+      function goTo(index, announce){
+        current = (index + slides.length) % slides.length;
+        render(announce !== false);
+      }
+
+      function activateWithKeyboard(event, action){
+        if(event.key === 'Enter' || event.key === ' '){
+          event.preventDefault();
+          action();
+        }
+      }
+
+      if(previous){
+        previous.addEventListener('click', function(){ goTo(current - 1); });
+        previous.addEventListener('keydown', function(event){
+          activateWithKeyboard(event, function(){ goTo(current - 1); });
+        });
+      }
+      if(next){
+        next.addEventListener('click', function(){ goTo(current + 1); });
+        next.addEventListener('keydown', function(event){
+          activateWithKeyboard(event, function(){ goTo(current + 1); });
+        });
+      }
+
+      dots.forEach(function(dot, index){
+        dot.addEventListener('click', function(){ goTo(index); });
+        dot.addEventListener('keydown', function(event){
+          activateWithKeyboard(event, function(){ goTo(index); });
+        });
+      });
+
+      slider.addEventListener('keydown', function(event){
+        if(event.key === 'ArrowLeft'){
+          event.preventDefault();
+          goTo(current - 1);
+        } else if(event.key === 'ArrowRight'){
+          event.preventDefault();
+          goTo(current + 1);
+        } else if(event.key === 'Home'){
+          event.preventDefault();
+          goTo(0);
+        } else if(event.key === 'End'){
+          event.preventDefault();
+          goTo(slides.length - 1);
+        }
+      });
+
+      mask.addEventListener('touchstart', function(event){
+        if(event.touches.length !== 1) return;
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+        dragging = true;
+      }, { passive: true });
+
+      mask.addEventListener('touchend', function(event){
+        if(!dragging || !event.changedTouches.length) return;
+        dragging = false;
+        var deltaX = event.changedTouches[0].clientX - touchStartX;
+        var deltaY = event.changedTouches[0].clientY - touchStartY;
+        if(Math.abs(deltaX) < 45 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+        goTo(current + (deltaX < 0 ? 1 : -1));
+      }, { passive: true });
+
+      var resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function(){ render(false); }, 120);
+      });
+
+      render(false);
+    });
+  } catch(e) { console.error('Slider init failed:', e); }
 })();
 
 // FAQ tabs (General / Pricing / The Scan) -- sets display via inline

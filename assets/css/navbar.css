@@ -18,11 +18,11 @@
 }
 
 .bm-navbar-solid{position:fixed;top:0;left:0;right:0;z-index:900;
-  background:rgba(14,13,12,.55)!important;
+ background:rgba(155, 155, 155, 0.049)!important;
   backdrop-filter:blur(14px) saturate(160%);
   -webkit-backdrop-filter:blur(14px) saturate(160%);
   border-bottom:1px solid rgba(255,255,255,.08);}
-.bm-navbar-solid .nav-link,.bm-navbar-solid .brand-navbar .logo-nav{color:#fff!important;}
+.bm-navbar-solid .nav-link,.bm-navbar-solid .brand-navbar .logo-nav{color:#828181!important;}
 .bm-navbar-solid .icon-menu{color:#fff!important;}
 .bm-navbar-solid .nav-link.w--current{color:var(--bm-teal-e)!important;font-weight:700;}
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
@@ -79,12 +79,10 @@
 .bm-hamburger-btn.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
 @media(max-width:991px){.bm-hamburger-btn{display:flex;}}
 
-/* Mobile menu -- default state only. Visibility is toggled by navbar.js
-   setting inline style directly, not a class, so there's no cascade/
-   specificity path for it to silently fail on (a transformed ancestor,
-   e.g. from Lenis smooth-scroll, can trap position:fixed children and
-   defeat a class-based toggle -- inline styles always win regardless). */
-#bmMobileMenu{display:none;}
+/* Mobile menu -- navbar.js moves it to <body> so its fixed positioning
+   is viewport-relative and cannot be trapped by the blurred navbar. */
+#bmMobileMenu{display:none;box-sizing:border-box;}
+body.bm-menu-open{overflow:hidden;}
 
 /* Body needs no padding-top override here -- .hero-home-a-section (or
    whatever section leads each page) should carry its own

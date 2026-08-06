@@ -1,0 +1,157 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- =====================================================================
+     TITLE + DESCRIPTION
+     Every page should set its own `title` and `description` in front
+     matter for the sharpest SEO. Falls back to site defaults if a page
+     doesn't set them -- so nothing ships with a blank tag.
+===================================================================== -->
+{% assign page_title = page.title | default: site.title %}
+{% assign page_description = page.description | default: site.description %}
+{% assign current_lang = page.lang | default: 'en' %}
+{% if page.title and page.title != site.title %}
+  <title>{{ page.title }} | Boltzmenn</title>
+{% else %}
+  <title>{{ site.title }} | {{ site.tagline }}</title>
+{% endif %}
+<meta name="description" content="{{ page_description }}">
+
+<!-- Canonical -- prevents duplicate-content penalties if the same page
+     is ever reachable via more than one URL (trailing slash, query
+     params, staging domain accidentally indexed, etc.) -->
+<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ '/sitemap.xml' | absolute_url }}">
+{% if page.translated_home %}
+  <link rel="alternate" hreflang="en" href="{{ '/' | absolute_url }}">
+  <link rel="alternate" hreflang="es" href="{{ '/es/' | absolute_url }}">
+  <link rel="alternate" hreflang="fr" href="{{ '/fr/' | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
+{% endif %}
+
+<!-- Robots -- set `noindex: true` in a page's front matter (e.g. internal
+     tools, thank-you pages) to keep it out of search results without
+     removing it from the nav. -->
+{% if page.noindex %}
+  <meta name="robots" content="noindex,nofollow">
+{% else %}
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+{% endif %}
+
+<!-- =====================================================================
+     OPEN GRAPH (Facebook, LinkedIn, WhatsApp link previews)
+===================================================================== -->
+<meta property="og:type" content="{{ page.og_type | default: 'website' }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_description }}">
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
+<meta property="og:image" content="{{ page.og_image | default: site.default_og_image | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{% if current_lang == 'es' %}
+  <meta property="og:locale" content="es_GQ">
+  <meta property="og:locale:alternate" content="en_NG">
+  <meta property="og:locale:alternate" content="fr_FR">
+{% elsif current_lang == 'fr' %}
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_NG">
+  <meta property="og:locale:alternate" content="es_GQ">
+{% else %}
+  <meta property="og:locale" content="en_NG">
+  <meta property="og:locale:alternate" content="es_GQ">
+  <meta property="og:locale:alternate" content="fr_FR">
+{% endif %}
+
+<!-- =====================================================================
+     TWITTER / X CARD
+===================================================================== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title }}">
+<meta name="twitter:description" content="{{ page_description }}">
+<meta name="twitter:image" content="{{ page.og_image | default: site.default_og_image | absolute_url }}">
+
+<!-- =====================================================================
+     FAVICON / THEME
+===================================================================== -->
+<link rel="icon" href="{{ site.logo }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ site.logo }}">
+<meta name="theme-color" content="#0b8c88">
+
+<!-- =====================================================================
+     FONTS
+===================================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+<!-- =====================================================================
+     STYLES
+===================================================================== -->
+<link rel="stylesheet" href="{{ '/assets/css/boltzmenn-brand.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/navbar.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% if page.extra_css %}
+  {% for sheet in page.extra_css %}
+    <link rel="stylesheet" href="{{ sheet | relative_url }}">
+  {% endfor %}
+{% endif %}
+
+<!-- =====================================================================
+     STRUCTURED DATA (JSON-LD) — Organization schema, site-wide.
+     Helps Google understand who Boltzmenn is independent of any one
+     page's text, and can surface the logo/sameAs links in search
+     results (knowledge panel eligibility).
+===================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "{{ site.title }}",
+  "description": "{{ page_description | strip_newlines }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.logo | absolute_url }}",
+  "image": "{{ site.default_og_image | absolute_url }}",
+  "email": "{{ site.contact.email }}",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ site.contact.city }}",
+    "addressCountry": "{{ site.contact.country }}"
+  },
+  "areaServed": "Africa",
+  "priceRange": "₦₦₦",
+  "sameAs": [
+    {% if site.social.linkedin %}"{{ site.social.linkedin }}"{% endif %}{% if site.social.instagram %},"{{ site.social.instagram }}"{% endif %}{% if site.social.facebook %},"{{ site.social.facebook }}"{% endif %}
+  ]
+}
+</script>
+
+<!-- Per-page structured data (e.g. a case study can set page.schema to
+     a full JSON-LD Article/Review block in front matter and it renders
+     here, in addition to the Organization schema above). -->
+{% if page.schema %}
+  <script type="application/ld+json">{{ page.schema }}</script>
+{% endif %}
+
+<!-- =====================================================================
+     ANALYTICS / SEARCH CONSOLE — only render if an ID is actually set,
+     so nothing broken ships to production by default.
+===================================================================== -->
+{% if site.google_site_verification != "" %}
+  <meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.google_analytics_id != "" %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics_id }}');
+  </script>
+{% endif %}
+
+<style>
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+</style>
+</head>

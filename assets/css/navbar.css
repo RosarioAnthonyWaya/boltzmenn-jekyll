@@ -36,9 +36,9 @@
 .right-nav{display:flex;align-items:center;gap:12px;}
 
 .bm-lang{position:relative;}
-.bm-lang-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.08);
+.bm-lang-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(130, 129, 129,.6);background:rgba(255,255,255,.08);
   display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:10px;font-weight:700;
-  color:#fff;padding:0;line-height:1;}
+  color:#8281819b;padding:0;line-height:1;}
 .bm-lang-btn:hover{border-color:var(--bm-teal);color:var(--bm-teal);}
 .bm-lang-panel{position:absolute;top:44px;right:0;background:#fff;border:1px solid var(--bm-border);
   border-radius:10px;padding:8px;min-width:140px;box-shadow:0 10px 30px rgba(0,0,0,.12);

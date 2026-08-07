@@ -18,11 +18,11 @@
 }
 
 .bm-navbar-solid{position:fixed;top:0;left:0;right:0;z-index:900;
-  background:rgba(14,13,12,.55)!important;
+   background:rgba(155, 155, 155, 0.049)!important;
   backdrop-filter:blur(14px) saturate(160%);
   -webkit-backdrop-filter:blur(14px) saturate(160%);
   border-bottom:1px solid rgba(255,255,255,.08);}
-.bm-navbar-solid .nav-link,.bm-navbar-solid .brand-navbar .logo-nav{color:#fff!important;}
+.bm-navbar-solid .nav-link,.bm-navbar-solid .brand-navbar .logo-nav{color:#828181!important;}
 .bm-navbar-solid .icon-menu{color:#fff!important;}
 .bm-navbar-solid .nav-link.w--current{color:var(--bm-teal-e)!important;font-weight:700;}
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {

@@ -1,0 +1,521 @@
+{% assign current_lang = page.lang | default: 'en' %}
+{% assign i18n = site.data.i18n[current_lang] %}
+
+<!-- =====================================================================
+     1. HERO — copy replaced, animated word-cycle removed (was showing
+     "Service Design / Brand Messaging / {{ i18n.pricing }} Strategy" — template filler)
+===================================================================== -->
+<section class="section hero-home-a-section">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="master-home-a">
+      <div class="left-home-a">
+        <div class="headline-home-a">
+          <div class="label-master"><div class="label-small">{{ i18n.hero_label }}</div></div>
+          <div class="text-wrap-hero-home-a">
+            <div class="heading-column">
+              <h1>{{ i18n.hero_title }}<br><em>{{ i18n.hero_title_em }}</em></h1>
+            </div>
+            <div>{{ i18n.hero_intro }}</div>
+          </div>
+          <div class="button-wrap-centered">
+            <a href="/diagnose/" class="cta-main w-inline-block">
+              <div class="button-text-mask"><div class="button-text"><div class="text-medium">{{ i18n.start_scan }}</div></div></div>
+              <div class="button-icon-wrap right"><div class="icon-button w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none"><path d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+              <div class="button-bg"></div>
+            </a>
+            <a href="#process" class="cta-main w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9 w-inline-block">
+              <div class="button-text-mask"><div class="button-text w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"><div class="text-medium">{{ i18n.see_work }}</div></div></div>
+              <div class="button-bg w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"></div>
+            </a>
+          </div>
+        </div>
+        <div class="home-a-avatars">
+          <div class="cta-avatars">
+            <div class="avatar-contact"><img src="{{ '/assets/images/homepage/trust-avatar-1.jpg' | relative_url }}" loading="lazy" alt="" class="image-cover"></div>
+            <div class="avatar-contact inward"><img src="{{ '/assets/images/homepage/trust-avatar-2.jpg' | relative_url }}" loading="lazy" alt="" class="image-cover"></div>
+            <div class="avatar-contact inward"><img src="{{ '/assets/images/homepage/trust-avatar-3.jpg' | relative_url }}" loading="lazy" alt="" class="image-cover"></div>
+          </div>
+          <div class="text-small">{{ i18n.businesses_supported_africa }}</div>
+        </div>
+      </div>
+      <div class="image-wrap-home-a">
+        <img src="https://i.ibb.co/d0sdHKB4/3N7D9995.jpg" loading="lazy" alt="{{ i18n.strategy_session_alt }}" class="image-cover horizontal">
+        <div class="home-a-hero-case">
+          <a href="/case-studies/" class="card-case-small w-inline-block">
+            <div class="content-case-small">
+              <div class="text-small text-body-bold">{{ i18n.prime_quote_short }}</div>
+              <div class="case-small-bottom-tile">
+                <div class="label-master"><div class="label-small">Emmanuel Okoh, PrimeTouch</div></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     2. TRUST BAR — logo section repurposed. Full marquee logos trimmed
+     to a single readable set (was tripled for a seamless loop — kept
+     to one pass here to keep this file legible; re-add copies in
+     Webflow if the seamless scroll effect is wanted back).
+===================================================================== -->
+<section class="section home-a-logo-section">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="w-row">
+      <div class="w-col w-col-6"></div>
+      <div class="home-a-logos-column w-col w-col-6">
+        <div class="content-home-a-logo">
+          <div class="text-h5">{{ i18n.impact_statement }}</div>
+          <div class="home-a-logo-wrap">
+            <div class="label-master"><div class="label-small">{{ i18n.worked_with }}</div></div>
+            <div class="bm-marquee-wrap">
+              <div class="bm-marquee-track">
+                <span class="bm-logo-text">PrimeTouch</span>
+                <span class="bm-logo-text">KET Shopping</span>
+                <span class="bm-logo-text">Willy's Shawarma</span>
+                <span class="bm-logo-text">Qate's Kitchen</span>
+                <span class="bm-logo-text">Syntyche Academy</span>
+                <span class="bm-logo-text">Dauntless Widows</span>
+                <span class="bm-logo-text">PrimeTouch</span>
+                <span class="bm-logo-text">KET Shopping</span>
+                <span class="bm-logo-text">Willy's Shawarma</span>
+                <span class="bm-logo-text">Qate's Kitchen</span>
+                <span class="bm-logo-text">Syntyche Academy</span>
+                <span class="bm-logo-text">Dauntless Widows</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     3. SIX FEELINGS (condensed) — foundations-section slider repurposed.
+     Original had 3 slides about the template itself; now 3 real founder
+     states. CTA links repointed from BYQ Studio to #process.
+===================================================================== -->
+<section class="section foundations-section">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="headline-foundations">
+      <h2 class="no-margins">{{ i18n.tell_us }} <em>{{ i18n.are }}</em></h2>
+    </div>
+    <div data-delay="2500" data-animation="slide" class="slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" role="region" aria-label="{{ i18n.carousel }}">
+      <div class="mask-foundations w-slider-mask">
+        <div class="slide-foundations w-slide" aria-label="1 of 3" role="group">
+          <div class="card-foundations">
+            <div class="foundations-inner-card">
+              <div class="text-wrap-foundations">
+                <div class="text-large heading-strong">{{ i18n.state_stuck }}</div>
+              </div>
+              <a href="/diagnose/" class="cta-main w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9 w-inline-block">
+                <div class="button-text-mask"><div class="button-text w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"><div class="text-medium">{{ i18n.fix_this }}</div></div></div>
+                <div class="button-icon-wrap right"><div class="icon-button w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none"><path d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+                <div class="button-bg w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"></div>
+              </a>
+            </div>
+            <div class="overlay-foundation-card"></div>
+          </div>
+        </div>
+        <div class="slide-foundations w-slide" aria-label="2 of 3" role="group">
+          <div class="card-foundations second">
+            <div class="foundations-inner-card">
+              <div class="text-wrap-foundations">
+                <div class="text-large heading-strong">{{ i18n.state_money }}</div>
+              </div>
+              <a href="/diagnose/" class="cta-main w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9 w-inline-block">
+                <div class="button-text-mask"><div class="button-text w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"><div class="text-medium">{{ i18n.clean_numbers }}</div></div></div>
+                <div class="button-icon-wrap right"><div class="icon-button w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none"><path d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+                <div class="button-bg w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"></div>
+              </a>
+            </div>
+            <div class="overlay-foundation-card"></div>
+          </div>
+        </div>
+        <div class="slide-foundations w-slide" aria-label="3 of 3" role="group">
+          <div class="card-foundations third">
+            <div class="foundations-inner-card">
+              <div class="text-wrap-foundations">
+                <div class="text-large heading-strong">{{ i18n.state_unknown }}</div>
+              </div>
+              <a href="/diagnose/" class="cta-main w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9 w-inline-block">
+                <div class="button-text-mask"><div class="button-text w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"><div class="text-medium">{{ i18n.diagnose_business }}</div></div></div>
+                <div class="button-icon-wrap right"><div class="icon-button w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none"><path d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+                <div class="button-bg w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"></div>
+              </a>
+            </div>
+            <div class="overlay-foundation-card"></div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-button-top-right prev w-slider-arrow-left" role="button" tabindex="0" aria-label="{{ i18n.previous_slide }}">
+        <div class="button-slider w-variant-5e19abdb-495e-028d-9e33-83620ea84249"><div class="button-circle-slot"><div class="icon-slider-button w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div>
+      </div>
+      <div class="slider-button-top-right w-slider-arrow-right" role="button" tabindex="0" aria-label="{{ i18n.next_slide }}">
+        <div class="button-slider w-variant-5e19abdb-495e-028d-9e33-83620ea84249"><div class="button-circle-slot"><div class="icon-slider-button w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div></div>
+      </div>
+      <div class="hidden w-slider-nav w-round w-num">
+        <div class="w-slider-dot w-active" aria-label="{{ i18n.show_slide }} 1 of 3" role="button" tabindex="0">1</div>
+        <div class="w-slider-dot" aria-label="{{ i18n.show_slide }} 2 of 3" role="button" tabindex="-1">2</div>
+        <div class="w-slider-dot" aria-label="{{ i18n.show_slide }} 3 of 3" role="button" tabindex="-1">3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     NEW: WHAT WE FIX — built from Home C's real home-c-features-section
+     component (6-tile grid), relabeled to the six areas Boltzmenn
+     actually works on. This section was missing before -- the site
+     implied trust without showing what's covered.
+===================================================================== -->
+<section class="section" id="whatwefix" style="padding:88px 0;background:#fff;">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="bm-eyebrow">{{ i18n.what_we_fix }}</div>
+    <h2 class="bm-section-h">{{ i18n.six_areas }}</h2>
+    <div class="w-layout-grid features-grid" style="margin-top:32px;">
+      <div class="feature-tile-main">
+        <div class="icon-wrap-feature"><div class="icon-large" style="font-size:20px;">₦</div></div>
+        <div class="text-wrap-feature-main"><div class="text-body-bold">{{ i18n.revenue_sales }}</div><div class="text-small body-medium">{{ i18n.revenue_sales_body }}</div></div>
+      </div>
+      <div class="feature-tile-main">
+        <div class="icon-wrap-feature"><div class="icon-large" style="font-size:20px;">⚙</div></div>
+        <div class="text-wrap-feature-main"><div class="text-body-bold">{{ i18n.operations_team }}</div><div class="text-small body-medium">{{ i18n.operations_team_body }}</div></div>
+      </div>
+      <div class="feature-tile-main">
+        <div class="icon-wrap-feature"><div class="icon-large" style="font-size:20px;">📊</div></div>
+        <div class="text-wrap-feature-main"><div class="text-body-bold">{{ i18n.financial_clarity }}</div><div class="text-small body-medium">{{ i18n.financial_clarity_body }}</div></div>
+      </div>
+      <div class="feature-tile-main">
+        <div class="icon-wrap-feature"><div class="icon-large" style="font-size:20px;">♥</div></div>
+        <div class="text-wrap-feature-main"><div class="text-body-bold">{{ i18n.customer_experience }}</div><div class="text-small body-medium">{{ i18n.customer_experience_body }}</div></div>
+      </div>
+      <div class="feature-tile-main">
+        <div class="icon-wrap-feature"><div class="icon-large" style="font-size:20px;">↗</div></div>
+        <div class="text-wrap-feature-main"><div class="text-body-bold">{{ i18n.funding_readiness }}</div><div class="text-small body-medium">{{ i18n.funding_readiness_body }}</div></div>
+      </div>
+      <div class="feature-tile-main">
+        <div class="icon-wrap-feature"><div class="icon-large" style="font-size:20px;">◎</div></div>
+        <div class="text-wrap-feature-main"><div class="text-body-bold">{{ i18n.founder_dependency }}</div><div class="text-small body-medium">{{ i18n.founder_dependency_body }}</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =====================================================================
+     5. PROCESS + THE SCAN — the widget-phase list already had 4 steps
+     that matched {{ i18n.understand }}/{{ i18n.strengthen }}/{{ i18n.build }}/{{ i18n.support }} almost exactly.
+     Moved out of the absolute-positioned image overlay (that's why it
+     wasn't showing on mobile -- the overlay's parent collapses height
+     on small screens, hiding everything absolutely positioned inside
+     it) into normal document flow, so it's always visible.
+===================================================================== -->
+<section class="section home-a-column-a-section" id="process">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="w-layout-grid column-halves">
+      <div class="content-column">
+        <div class="headline-column">
+          <div class="label-master"><div class="label-small">{{ i18n.how_we_work }}</div></div>
+          <div class="heading-column">
+            <h2 class="text-h3 no-margins">{{ i18n.better_businesses }} <em>{{ i18n.deliberately }}</em></h2>
+            <div>{{ i18n.scan_explanation }}</div>
+          </div>
+          <a href="#next" class="cta-main w-inline-block">
+            <div class="button-text-mask"><div class="button-text">{{ i18n.see_next }}</div></div>
+            <div class="button-bg"></div>
+          </a>
+        </div>
+        <div class="widget-phase" style="margin-top:32px;max-width:none;">
+          <div class="widget-phase-top-tile">
+            <div class="body-strong text-body-bold">{{ i18n.project_phase }}</div>
+          </div>
+          <div class="widget-phase-bottom-tile">
+            <div class="widget-phase-list-item filled"><div class="heading-strong">{{ i18n.understand }}</div></div>
+            <div class="widget-phase-list-item"><div class="heading-strong">{{ i18n.strengthen }}</div></div>
+            <div class="widget-phase-list-item"><div class="heading-strong">{{ i18n.build }}</div></div>
+            <div class="widget-phase-list-item"><div class="heading-strong">{{ i18n.support }}</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="image-wrap-column">
+        <img src="https://i.ibb.co/d0sdHKB4/3N7D9995.jpg" loading="lazy" alt="" class="image-cover horizontal">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     6. WHAT'S NEXT — callout-section repurposed for {{ i18n.the_scan }}-to-next
+     handoff line, keeping the single callout card but reframing the copy
+     to point into the 4 downstream services (listed below it, reusing the
+     existing feature-tile pattern from column-a since there's no native
+     4-card grid in Home A).
+===================================================================== -->
+<!-- =====================================================================
+     6a. AFTER THE SCAN — slim handoff callout, no longer carrying the
+     card grid inside it (that's what made it look cramped).
+===================================================================== -->
+<section class="section callout-section">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="block-callout">
+      <div class="content-callout">
+        <div class="headline-callout">
+          <div class="label-master"><div class="label-small">{{ i18n.after_scan }}</div></div>
+          <h2 class="no-margins">{{ i18n.next_depends }} <em>{{ i18n.what_we_find }}</em></h2>
+        </div>
+        <div class="callout-bottom-tile">
+          <div>{{ i18n.not_a_menu }}</div>
+        </div>
+      </div>
+      <div class="image-wrap-callout">
+        <img src="https://cdn.prod.website-files.com/68d7c06dc68ea0c551b91d3d/68dac60db366b3e3c0283a76_Team%20Image-4.webp" loading="lazy" alt="" class="image-cover">
+      </div>
+    </div>
+  </div>
+  <div class="overlay-callout"></div>
+</section>
+
+<!-- =====================================================================
+     6b. WHAT'S NEXT — now its own standalone section, given room to
+     breathe instead of being stacked inside the callout box.
+===================================================================== -->
+<section class="section" id="next" style="padding:88px 0;background:var(--_🎨-color--tokens---background--base,#F5F5F5);">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="bm-eyebrow">{{ i18n.four_paths }}</div>
+    <h2 class="bm-section-h">{{ i18n.four_paths_names }}</h2>
+    <div class="w-layout-grid features-grid" style="margin-top:32px;">
+      <a href="/lift/" class="feature-tile-main" style="text-decoration:none;color:inherit;">
+        <div class="bm-next-tag">{{ i18n.flagship }}</div>
+        <div class="text-wrap-feature-main"><div class="text-body-bold">LIFT</div><div class="text-small body-medium">{{ i18n.lift_body }}</div><div class="bm-next-price">{{ i18n.price_lift }}</div></div>
+      </a>
+      <a href="/scale/" class="feature-tile-main" style="text-decoration:none;color:inherit;">
+        <div class="text-wrap-feature-main"><div class="text-body-bold">Scale</div><div class="text-small body-medium">{{ i18n.scale_body }}</div><div class="bm-next-price">{{ i18n.price_scale }}</div></div>
+      </a>
+      <a href="/financial-clarity/" class="feature-tile-main" style="text-decoration:none;color:inherit;">
+        <div class="text-wrap-feature-main"><div class="text-body-bold">{{ i18n.financial_clarity }}</div><div class="text-small body-medium">{{ i18n.clarity_body }}</div><div class="bm-next-price">{{ i18n.from_month }}</div></div>
+      </a>
+      <a href="/circle/" class="feature-tile-main" style="text-decoration:none;color:inherit;">
+        <div class="text-wrap-feature-main"><div class="text-body-bold">Circle</div><div class="text-small body-medium">{{ i18n.circle_body }}</div><div class="bm-next-price">{{ i18n.scope_based }}</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     7. FRAMEWORKS + CREDIBILITY — column-b repurposed. {{ i18n.the_article }} testimonial
+     card ("Evermind helped us...") became the credibility quote.
+===================================================================== -->
+<section class="section home-a-column-b-section" id="ip">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="w-layout-grid column-halves">
+      <div class="image-wrap-column">
+        <img src="{{ '/assets/images/homepage/volt-arena.jpg' | relative_url }}" loading="lazy" alt="" class="image-cover">
+      </div>
+      <div class="content-column">
+        <div class="headline-column">
+          <div class="label-master"><div class="label-small">{{ i18n.our_ip }}</div></div>
+          <div class="heading-column">
+            <h2 class="text-h3 no-margins">{{ i18n.tools_built }} <em>{{ i18n.realities }}</em> {{ i18n.african_business }}</h2>
+            <div>{{ i18n.ip_body }}</div>
+          </div>
+        </div>
+        <div class="contact-testimonial base-full">
+          <div class="contact-testimonial-top-tile">
+            <div>{{ i18n.operator_quote }}</div>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar"><img loading="lazy" src="https://cdn.prod.website-files.com/68d7c06dc68ea0c551b91d3d/68dac60d15809a7adaca5671_Team%20Image-6.webp" alt="" class="image-cover"></div>
+            <div class="text-body-bold body-strong">{{ i18n.cofounder }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     8. BOLTZROOM — reusing the second cta-a card slot (see final CTA
+     section below) since Home A has no dedicated community section.
+     A short standalone block added here using the same callout-section
+     pattern already used once above, to keep BoltzRoom visible on its
+     own rather than losing it inside the CTA cards.
+===================================================================== -->
+<section class="section callout-section" id="boltzroom" style="background:#111;color:#fff;">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="block-callout">
+      <div class="content-callout">
+        <div class="headline-callout">
+          <div class="label-master"><div class="label-small" style="color:#1eb085;">{{ i18n.community }}</div></div>
+          <h2 class="no-margins" style="color:#fff;">{{ i18n.the_article }} <em>BoltzRoom</em></h2>
+        </div>
+        <div class="callout-bottom-tile">
+          <div style="color:rgba(255,255,255,.6);">{{ i18n.boltzroom_body }}</div>
+          <a href="mailto:info@boltzmenn.com?subject=BoltzRoom" class="cta-main w-inline-block">
+            <div class="button-text-mask"><div class="button-text"><div class="text-medium">{{ i18n.join_next }}</div></div></div>
+            <div class="button-bg"></div>
+          </a>
+        </div>
+      </div>
+      <div class="image-wrap-callout">
+        <img src="https://i.ibb.co/fzvGnBH1/3N7D9868.jpg" loading="lazy" alt="{{ i18n.boltzroom_session_alt }}" class="image-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     4. PROOF — home-a-testimonial-section repurposed, moved here in
+     document order per our locked plan (proof sits after recognition,
+     before the process/offer). Card copy replaced.
+===================================================================== -->
+<section class="section home-a-testimonial-section" id="proof">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="headline-testimonials-home-a">
+      <div class="label-master w-variant-3dcbab84-0b89-15c0-0305-ed72757207a9"><div class="label-small">{{ i18n.results }}</div></div>
+      <h2 class="no-margins">{{ i18n.businesses_moved }}</h2>
+      <a href="mailto:info@boltzmenn.com" class="cta-main w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9 w-inline-block">
+        <div class="button-text-mask"><div class="button-text w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"><div>{{ i18n.get_in_touch }}</div></div></div>
+        <div class="button-bg w-variant-c69fc54f-c8c7-ba16-cab1-d159723763a9"></div>
+      </a>
+    </div>
+    <div class="w-layout-grid testimonial-thirds">
+      <div class="image-wrap-testimonial-left"><img src="{{ '/assets/images/homepage/suya-vendor.jpg' | relative_url }}" loading="lazy" alt="" class="image-cover"></div>
+      <div class="card-testimonial-home">
+        <div class="text-h5 heading-strong">{{ i18n.prime_quote }}</div>
+        <div class="testimonial-bottom-tile">
+          <div class="text-wrap-testimonial">
+            <div class="text-body-bold">Emmanuel Okoh</div>
+            <div class="body-medium">{{ i18n.prime_founder }}</div>
+          </div>
+        </div>
+        <div class="wrap-author-testimonial">
+          <div class="image-wrap-testimonial-small"><img src="{{ '/assets/images/case-studies/primetouch-hero.jpg' | relative_url }}" loading="lazy" alt="Emmanuel Okoh" class="image-cover"></div>
+        </div>
+      </div>
+      <div class="card-testimonial-home">
+        <div class="text-h5 heading-strong">{{ i18n.ket_quote }}</div>
+        <div class="wrap-author-testimonial">
+          <div class="image-wrap-testimonial-small"><img src="https://cdn.prod.website-files.com/68d7c06dc68ea0c551b91d3d/68dac60dc6dd7964d063b394_Team%20Image-5.webp" loading="lazy" alt="" class="image-cover"></div>
+        </div>
+        <div class="testimonial-bottom-tile">
+          <div class="text-wrap-testimonial">
+            <div class="text-body-bold">Marcus Leigh</div>
+            <div class="body-medium">KET Shopping</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:2px;margin-top:2px;">
+      <div style="flex:1;background:#F5F5F5;padding:26px;text-align:center;"><div class="text-h2">50+</div><div class="text-small body-medium">{{ i18n.businesses_supported }}</div></div>
+      <div style="flex:1;background:#F5F5F5;padding:26px;text-align:center;"><div class="text-h2">₦500M+</div><div class="text-small body-medium">{{ i18n.revenue_impact }}</div></div>
+      <div style="flex:1;background:#F5F5F5;padding:26px;text-align:center;"><div class="text-h2">71%</div><div class="text-small body-medium">{{ i18n.profit_lift }}</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     9a. {{ i18n.faq }} — tabs structure kept, content replaced with real objections
+===================================================================== -->
+<section class="section faq-section" id="faq">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="headline-faq">
+      <div class="label-master"><div class="label-small">{{ i18n.faq }}</div></div>
+      <h2 class="no-margins">{{ i18n.honest_answers }}</h2>
+      <div class="body-strong">{{ i18n.before_start }}</div>
+    </div>
+    <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="tabs-faq w-tabs">
+      <div class="tabs-menu-faq w-tab-menu" role="tablist">
+        <a data-w-tab="Tab 1" class="tab-link-faq w-inline-block w-tab-link w--current" role="tab" aria-selected="true"><div>{{ i18n.general }}</div></a>
+        <a data-w-tab="Tab 2" class="tab-link-faq w-inline-block w-tab-link" tabindex="-1" role="tab" aria-selected="false"><div>{{ i18n.pricing }}</div></a>
+        <a data-w-tab="Tab 3" class="tab-link-faq w-inline-block w-tab-link" tabindex="-1" role="tab" aria-selected="false"><div>{{ i18n.the_scan }}</div></a>
+      </div>
+      <div class="tabs-content-faq w-tab-content">
+        <div data-w-tab="Tab 1" class="tab-pane-faq w-tab-pane w--tab-active" role="tabpanel" style="display:block;">
+          <div class="faq-block">
+            <div class="expandable-single">
+              <div class="expandable-top"><div class="text-body-bold">{{ i18n.faq_consultant_q }}</div><div class="faq-animated-box"><div class="faq-horizontal"></div><div class="faq-vertical"></div></div></div>
+              <div class="expandable-bottom"><p class="faq-paragraph">{{ i18n.faq_consultant_a }}</p></div>
+            </div>
+            <div class="expandable-single">
+              <div class="expandable-top"><div class="text-body-bold">{{ i18n.faq_data_q }}</div><div class="faq-animated-box"><div class="faq-horizontal"></div><div class="faq-vertical"></div></div></div>
+              <div class="expandable-bottom"><p class="faq-paragraph">{{ i18n.faq_data_a }}</p></div>
+            </div>
+            <div class="expandable-single">
+              <div class="expandable-top"><div class="text-body-bold">{{ i18n.faq_single_q }}</div><div class="faq-animated-box"><div class="faq-horizontal"></div><div class="faq-vertical"></div></div></div>
+              <div class="expandable-bottom"><p class="faq-paragraph">{{ i18n.faq_single_a }}</p></div>
+            </div>
+          </div>
+        </div>
+        <div data-w-tab="Tab 2" class="tab-pane-faq w-tab-pane" role="tabpanel">
+          <div class="faq-block">
+            <div class="expandable-single">
+              <div class="expandable-top"><div class="text-body-bold">{{ i18n.faq_scan_cost_q }}</div><div class="faq-animated-box"><div class="faq-horizontal"></div><div class="faq-vertical"></div></div></div>
+              <div class="expandable-bottom"><p class="faq-paragraph">{{ i18n.faq_scan_cost_a }}</p></div>
+            </div>
+            <div class="expandable-single">
+              <div class="expandable-top"><div class="text-body-bold">{{ i18n.faq_lift_cost_q }}</div><div class="faq-animated-box"><div class="faq-horizontal"></div><div class="faq-vertical"></div></div></div>
+              <div class="expandable-bottom"><p class="faq-paragraph">{{ i18n.faq_lift_cost_a }}</p></div>
+            </div>
+          </div>
+        </div>
+        <div data-w-tab="Tab 3" class="tab-pane-faq w-tab-pane" role="tabpanel">
+          <div class="faq-block">
+            <div class="expandable-single">
+              <div class="expandable-top"><div class="text-body-bold">{{ i18n.faq_scan_cover_q }}</div><div class="faq-animated-box"><div class="faq-horizontal"></div><div class="faq-vertical"></div></div></div>
+              <div class="expandable-bottom"><p class="faq-paragraph">{{ i18n.faq_scan_cover_a }}</p></div>
+            </div>
+            <div class="expandable-single">
+              <div class="expandable-top"><div class="text-body-bold">{{ i18n.faq_nothing_wrong_q }}</div><div class="faq-animated-box"><div class="faq-horizontal"></div><div class="faq-vertical"></div></div></div>
+              <div class="expandable-bottom"><p class="faq-paragraph">{{ i18n.faq_nothing_wrong_a }}</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     9b. FINAL CTA — cta-a-section repurposed. Template's "get template"
+     sales widget (sales-cta-master) removed entirely — vendor promo,
+     not part of the actual site.
+===================================================================== -->
+<section class="section cta-a-section">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="headline-cta-a">
+      <h2 class="no-margins">{{ i18n.right_structure }} <em>{{ i18n.how_business_grows }}</em></h2>
+    </div>
+    <div class="w-layout-grid cta-a-halves">
+      <div class="card-cta-a">
+        <div class="cta-a-card-top-tile">
+          <div class="icon-cta-a w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 40 40" fill="none"><path d="M13.3333 3.33325V9.99992M26.6667 3.33325V9.99992M5 16.6666H35M8.33333 6.66659H31.6667C33.5076 6.66659 35 8.15897 35 9.99992V33.3333C35 35.1742 33.5076 36.6666 31.6667 36.6666H8.33333C6.49238 36.6666 5 35.1742 5 33.3333V9.99992C5 8.15897 6.49238 6.66659 8.33333 6.66659Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <h3 class="text-h4 no-margins">{{ i18n.start_with_scan }}</h3>
+        </div>
+        <div class="cta-a-card-bottom-tile">
+          <div class="body-strong">{{ i18n.scan_cta_body }}</div>
+          <a href="/diagnose/" class="cta-main w-inline-block">
+            <div class="button-text-mask"><div class="button-text"><div>{{ i18n.run_diagnosis }}</div></div></div>
+            <div class="button-icon-wrap right"><div class="icon-button w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none"><path d="M3.33337 8.00016H12.6667M12.6667 8.00016L8.00004 3.3335M12.6667 8.00016L8.00004 12.6668" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div></div>
+            <div class="button-bg"></div>
+          </a>
+        </div>
+      </div>
+      <div class="card-cta-a second">
+        <div class="cta-a-card-top-tile">
+          <div class="icon-cta-a w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 40 40" fill="none"><path d="M11.6661 20.0001H19.9994" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <h3 class="text-h4 no-margins">{{ i18n.whatsapp_title }}</h3>
+        </div>
+        <div class="cta-a-card-bottom-tile">
+          <div class="body-strong">{{ i18n.whatsapp_body }}</div>
+          <a href="https://wa.me/2340000000000" class="cta-main w-inline-block">
+            <div class="button-text-mask"><div class="button-text"><div>{{ i18n.whatsapp_cta }}</div></div></div>
+            <div class="button-bg"></div>
+          </a>
+        </div>
+        <div class="overlay-blur"></div>
+      </div>
+    </div>
+  </div>
+</section>
